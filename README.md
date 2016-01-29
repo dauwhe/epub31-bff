@@ -69,8 +69,19 @@ The package assumes that resources of type "text/html" are in the "spine" unless
 }
 ```
 
+####Link objects
+
+Each publication component is described by a link object. The `href` and `type` attributes are required. 
+
 | Name  | Value | Format | Required? |
 | ------------- | ------------- | ------------- | ------------- |
 | href  | link location  | URI  | Yes  |
+| type  | MIME type of resource  | MIME media type  | Yes  |
+| sequence  | is the linked resource part of the linear reading order?  | boolean  | No  |
+| rel  | relationship  | TK  | No  |
+| properties  | properties associated with the linked resource  | (see spec)  | No  |
+| templated  | indicates linked resource is a URI template  | boolean  | No  |
 
+
+####Types of collections
 
