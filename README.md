@@ -1,12 +1,12 @@
-#Browser-friendly format
+#Browser-friendly format for EPUB 3.1
 
 EPUB as it exists today is not directly usable by a web browser. The web-friendly content files are inside a zip package, which also contains container and package files expressed in a custom XML vocabulary. 
 
 The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier for web developers to display EPUB content by [1] allowing an unzipped ("exploded") publication, and [2] by providing an alternative JSON serialization of the information in container.xml and the package document(s). 
 
-##The Container
+##Packaging
 
-While ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31], this is optional for EPUB-BFF. A packaged EPUB-BFF must have a mimetype file, and be zipped in the same manner as EPUB31. But instead of META-INF and container.xml, the JSON package document must be called package.json and placed in the top level of the publication folder.
+Ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31]. EPUB-BFF is not defined in a packaged state (although this may change in the future). The EPUB-BFF JSON package file may be included in an ordinary packaged EPUB if referenced properly, but reading systems have no obligation to read the JSON package file.
 
 ##The JSON Package Document
 
