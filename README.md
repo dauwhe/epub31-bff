@@ -146,69 +146,69 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 #####Example 7: media overlays
 ```json
 {
-  "metadata": {
-    "title": "Audio Book",
-    "language": "en",
-    "identifier": {
-      "type": "unique-identifier",
-      "value": "qqq",
-      "modified": "2016-01-01T00:00:01Z"
-    },
-    "creator": "Jane Doe"
-  },
+  "metadata": {
+    "title": "Audio Book",
+    "language": "en",
+    "identifier": {
+      "type": "unique-identifier",
+      "value": "qqq",
+      "modified": "2016-01-01T00:00:01Z"
+    },
+    "creator": "Jane Doe"
+  },
 
-  "rendition": {
+  "rendition": {
 
-    "metadata": {
-      "duration": "1:36:20",
-      "narrator": "Joe Speaker",
-      "active-class": "-epub-media-overlay-active",
-      "playback-active-class": "-epub-media-overlay-playing"
-    },
+    "metadata": {
+      "duration": "1:36:20",
+      "narrator": "Joe Speaker",
+      "active-class": "-epub-media-overlay-active",
+      "playback-active-class": "-epub-media-overlay-playing"
+    },
 
-    "link": [{
-        "href": "xhtml/chapter01.xhtml",
-        "type": "application/xhtml+xml",
-        "media-overlay": "chapter1_audio.smil"
-      },
+    "link": [{
+        "href": "xhtml/chapter01.xhtml",
+        "type": "application/xhtml+xml",
+        "media-overlay": "chapter1_audio.smil"
+      },
 
-      {
-        "href": "xhtml/chapter02.xhtml",
-        "type": "application/xhtml+xml",
-        "media-overlay": "chapter2_audio.smil"
-      },
+      {
+        "href": "xhtml/chapter02.xhtml",
+        "type": "application/xhtml+xml",
+        "media-overlay": "chapter2_audio.smil"
+      },
 
-      {
-        "href": "xhtml/chapter03.xhtml",
-        "type": "application/xhtml+xml",
-        "media-overlay": "chapter3_audio.smil"
-      }, {
-        "href": "css/epub.css",
-        "type": "text/css"
-      }, {
-        "href": "chapter1_audio.smil",
-        "type": "application/smil+xml"
-      }, {
-        "href": "chapter2_audio.smil",
-        "type": "application/smil+xml"
-      }, {
-        "href": "chapter3_audio.smil",
-        "type": "application/smil+xml"
-      }, {
-        "href": "chapter1_audio.mp3",
-        "type": "audio/mpeg",
-        "duration": "0:32:29"
-      }, {
-        "href": "chapter2_audio.mp3",
-        "type": "audio/mpeg",
-        "duration": "0:34:02"
-      }, {
-        "href": "chapter3_audio.mp3",
-        "type": "audio/mpeg",
-        "duration": "0:29:49"
-      }
-    ]
-  }
+      {
+        "href": "xhtml/chapter03.xhtml",
+        "type": "application/xhtml+xml",
+        "media-overlay": "chapter3_audio.smil"
+      }, {
+        "href": "css/epub.css",
+        "type": "text/css"
+      }, {
+        "href": "chapter1_audio.smil",
+        "type": "application/smil+xml"
+      }, {
+        "href": "chapter2_audio.smil",
+        "type": "application/smil+xml"
+      }, {
+        "href": "chapter3_audio.smil",
+        "type": "application/smil+xml"
+      }, {
+        "href": "chapter1_audio.mp3",
+        "type": "audio/mpeg",
+        "duration": "0:32:29"
+      }, {
+        "href": "chapter2_audio.mp3",
+        "type": "audio/mpeg",
+        "duration": "0:34:02"
+      }, {
+        "href": "chapter3_audio.mp3",
+        "type": "audio/mpeg",
+        "duration": "0:29:49"
+      }
+    ]
+  }
 
 }
 ```
