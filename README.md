@@ -8,9 +8,9 @@ The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier
 
 EPUB-BFF content documents are identical to those in EPUB 3.1.
 
-```
-**Note:** EPUB 3.1 now allows the HTML serialization of HTML5. 
-```
+
+>**Note:** EPUB 3.1 now allows the HTML serialization of HTML5. 
+
 
 ##Containers
 
@@ -110,9 +110,9 @@ Each publication component is described by a link object, which consists of the 
 
 Each EPUB-BFF must have at least one rendition collection, but can have as many as required. If there is more than one rendition collection, each must have rendition metadata to allow the reading system to select the proper rendition.
 
-```
-**Issue:** Rendition mapping
-```
+
+>**Issue:** Rendition mapping
+
 
 #####Example 4: Multiple renditions with selection metadata
 ```json
