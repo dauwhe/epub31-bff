@@ -100,7 +100,7 @@ Each publication component is described by a link object, which consists of the 
 | type  | MIME type of resource  | MIME media type  | Yes  |
 | sequence  | is the linked resource part of the linear reading order?  | boolean  | No  |
 | rel  | relationship  | TK  | No  |
-| properties  | properties associated with the linked resource  | see http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values  | No  |
+| properties  | properties associated with the linked resource  | see [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
 
 
