@@ -90,15 +90,16 @@ Or include an SVG file as a spine item:
 }
 ```
 
-###The link object
+###The `links` object
 
-Each publication component is described by a link object, which consists of the following key/value pairs. The `href` and `type` pairs are required. 
+Each publication component is described by a `links` object, which consists of the following key/value pairs. The `href` and `type` pairs are required. 
 
 | Name  | Value | Format | Required? |
 | ------------- | ------------- | ------------- | ------------- |
 | href  | link location  | URI  | Yes  |
 | type  | MIME type of resource  | MIME media type  | Yes  |
 | sequence  | is the linked resource part of the linear reading order?  | boolean  | No  |
+| title  | title of the linked resource  | text  | No  |
 | rel  | relationship  | TK  | No  |
 | properties  | properties associated with the linked resource  | see [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
@@ -161,7 +162,7 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
   "distributable-object": {
 
-    "link": [{
+    "links": [{
       "href": "xhtml/chapter01.xhtml",
       "type": "application/xhtml+xml"
     }, {
@@ -215,7 +216,7 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
       "playback-active-class": "-epub-media-overlay-playing"
     },
 
-    "link": [{
+    "links": [{
         "href": "xhtml/chapter01.xhtml",
         "type": "application/xhtml+xml",
         "media-overlay": "chapter1_audio.smil"
