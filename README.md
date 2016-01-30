@@ -102,6 +102,8 @@ Each publication component is described by a `links` object, which consists of t
 | title  | title of the linked resource  | text  | No  |
 | rel  | relationship  | TK  | No  |
 | properties  | properties associated with the linked resource  | see [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
+| media-overlay  | indicates SMIL file corresponding to the linked resource  | URI  | No  |
+| duration  | indicates length the linked resource  | subset of SMIL clock value  | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
 
 
