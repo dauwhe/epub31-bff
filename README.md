@@ -22,7 +22,14 @@ The JSON package document described below must be named `package.json` and must 
 
 ###Introduction
 
-A single JSON package document replaces both container.xml and the package file(s). All of these files consist of essentially two things—metadata and links. So with only the concepts of metadata and links, we can express document metadata, manifests, the spine, rendition metadata, and collections.
+EPUB reading systems have traditionally required a large amount of information about the publication, without parsing the individual files of said publication. `container.xml`, for simple EPUBs, exists only to point to the package file, which in turn describes:
+
+1. Publication metadata, such as title, creator, identifiers, language, etc.
+2. Rendition metadata, providing hints to the reading system on how to display the content.
+3. A manifest, describing every component file of the publication, their media types, and various special properties.
+4. A spine, describing the linear reading order of the publication
+
+A single JSON package document can replace both container.xml and the package file(s). All of these files consist of essentially two things—metadata and links. So with only the concepts of metadata and links, we can express document metadata, manifests, the spine, rendition metadata, and collections.
 
 ###Data Model
 
@@ -131,10 +138,48 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 #####Example 5: preview collection
 
-
 ```json
 { 
-"example": "tk" 
+  "metadata": {
+    ...
+  },
+
+  "rendition": {
+    ...
+  }
+
+  "preview": {
+
+    "metadata": {
+      "title": "Moby Dick Preview",
+      "language": "en-US",
+      "identifier": {
+        "type": "unique-identifier",
+        "value": "9780000000001",
+        "modified": "2015-09-29T17:00:00Z"
+      }
+    },
+
+      "links": [{
+        "href": "cover.jpg",
+        "type": "image/jpeg",
+        "properties": "spine cover-image"
+      }, {
+        "href": "c001.html",
+        "type": "text/html"
+      }, {
+        "href": "c002.html",
+        "type": "text/html"
+      },{
+        "href": "toc.html",
+        "type": "text/html",
+        "properties": "nav"
+      }, {
+        "href": "style.css",
+        "type": "text/css"
+      }]
+    }
+  },
 }
 
 ```
