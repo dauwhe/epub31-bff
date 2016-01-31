@@ -235,7 +235,79 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 ####Collection collections
 
+The key for a collection is the name of the collection type. In the following example, based on Example 40 from the indexing spec, nested collections are used to describe a complex index.
+
+>**Issue:** I question the utility of this. 
+
 #####Example 7: index group
+
+
+```json
+
+{ 
+  "metadata": {
+    ...
+  },
+
+  "rendition": {
+    ...
+  }
+
+  "index": {
+    "links": [{
+        "index-group": {
+
+          "links": [{
+            "href": "subjectIndex-a01.html",
+            "type": "text/html"
+          }, {
+            "href": "subjectIndex-a02.html",
+            "type": "text/html"
+          }, {
+            "href": "subjectIndex-a03.html",
+            "type": "text/html"
+          }]
+
+        }
+      },
+
+
+      {
+        "href": "subjectIndex-b.html",
+        "type": "text/html"
+      },
+
+      {
+
+        "index-group": {
+          "links": [{
+
+            "href": "subjectIndex-c01.html",
+            "type": "text/html"
+          }, {
+            "href": "subjectIndex-c02.html",
+            "type": "text/html"
+          }, {
+            "href": "subjectIndex-c03.html",
+            "type": "text/html"
+          }]
+
+        }
+      },
+
+      {
+        "href": "subjectIndex-d.html",
+        "type": "text/html"
+      }, {
+        "href": "subjectIndex-e.html",
+        "type": "text/html"
+      }
+    ]
+  }
+
+}
+
+```
 
 
 ###Media overlays
