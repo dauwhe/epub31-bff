@@ -6,7 +6,15 @@ The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier
 
 ##Content Documents
 
-EPUB-BFF content documents are identical to those in EPUB 3.1.
+EPUB-BFF content documents follow the usual rules of EPUB 3.1.
+
+###Associating a JSON package document with an EPUB-BFF content document
+
+To indicate that an EPUB-BFF content document is associated with a particular JSON package document, use a `link` element in the HTML `head`:
+
+```html
+<link href="package.json" rel="package" type="application/vnd.epub.package+json" />
+```
 
 
 >**Note:** EPUB 3.1 now allows the HTML serialization of HTML5. 
@@ -126,8 +134,71 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 #####Example 4: Multiple renditions with selection metadata
 ```json
-{ 
-"example": "tk" 
+{
+  "metadata": {
+    "title": "Chouinard",
+    "language": "en",
+    "identifier": {
+      "type": "unique-identifier",
+      "value": "42",
+      "modified": "2016-02-01T15:45:00Z"
+    },
+    "creator": "Yvon Chouinard",
+    "description": "Equipment for alpinists",
+    "date": "1972-01-01"
+  },
+
+  "rendition": {
+    "metadata": {
+      "layout": "reflowable",
+      "accessMode": "textual",
+      "label": "Optimized for smaller screens"
+    },
+
+    "links": [{
+      "href": "reflow/html/section001.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "reflow/html/section002.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "reflow/html/section003.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "reflow/css/reflow.css",
+      "type": "text/css"
+    }]
+  },
+
+  "rendition": {
+    "metadata": {
+      "media": "color, min-width: 1920px",
+      "layout": "pre-paginated",
+      "accessMode": "visual",
+      "label": "Color-optimized print replica"
+    },
+
+    "links": [{
+      "href": "fixed/html/page001.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "fixed/html/page002.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "fixed/html/page003.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "fixed/html/page004.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "fixed/html/page005.xhtml",
+      "type": "application/xhtml+xml"
+    }, {
+      "href": "fixed/css/fixed.css",
+      "type": "text/css"
+    }]
+  }
+
 }
 
 ```
@@ -163,7 +234,7 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
       "links": [{
         "href": "cover.jpg",
         "type": "image/jpeg",
-        "properties": "spine cover-image"
+        "properties": "cover-image"
       }, {
         "href": "c001.html",
         "type": "text/html"
