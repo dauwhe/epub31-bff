@@ -8,7 +8,7 @@ The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier
 
 EPUB-BFF content documents follow the usual rules of EPUB 3.1.
 
-###Associating a JSON package document with an EPUB-BFF content document
+####Associating a JSON package document with an EPUB-BFF content document
 
 To indicate that an EPUB-BFF content document is associated with a particular JSON package document, use a `link` element in the HTML `head`:
 
