@@ -122,14 +122,14 @@ I have collected several different proposals for how best to do this.
 #####Example of proposal 3
 ```html
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" prefix="schema: http://schema.org/">
+<head typeof="schema:Book">
 <meta charset="utf-8" />
 <title>Moby-Dick</title>
-  <meta id="title" name="dc:title" content="Moby-Dick, or, The Whale">
-  <meta id="pub-id" name="dc:identifier" content="9780000000001">
-  <meta id="modified-date" name="dcterms:modified" content="2015-09-29T17:00:00Z">
-  <meta id="language" name="dc:language" content="en-US">
+  <meta id="title" property="schema:name" content="Moby-Dick, or, The Whale">
+  <meta id="pub-id" property="schema:isbn" content="9780000000001">
+  <meta id="modified-date" property="schema:dateModified" content="2015-09-29T17:00:00Z">
+  <meta id="language" property="schema:inLanguage" content="en-US">
 
   <link href="style.css" type="text/css" rel="prefetch">
   <link href="cover.jpg" type="image/jpeg" role="doc-cover" rel="prefetch">

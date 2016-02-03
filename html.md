@@ -26,6 +26,29 @@ Metadata in `index.html` applies to the publication as a whole.
 ```
 
 
+###Media overlays
+
+In `nav`: 
+
+```html
+  <li><a href="html/c001.html" type="text/html" data-media-overlay-ref="ch01smil">Loomings</a></li>
+```
+
+In `head`:
+
+```html
+<meta name="duration" content="1:36:20">
+
+
+<meta name="duration" content="0:32:29">
+...
+
+
+
+<link id="ch01smil" href="smil/c001-overlay.smil" type="application/smil+xml" rel="prefetch">
+
+```
+
 
 
 
@@ -112,7 +135,7 @@ display: inline;
 
 <link href="css/main.css" type="text/css" rel="prefetch">
 <link href="images/cover.jpg" type="image/jpeg" role="doc-cover" rel="prefetch">
-<link href="smil/c001-overlay.smil" type="application/smil+xml" rel="prefetch">
+<link id="ch01smil" href="smil/c001-overlay.smil" type="application/smil+xml" rel="prefetch">
 <link href="audio/chapter1_audio.mp3" type="audio/mpeg" rel="prefetch">
 
 
@@ -136,7 +159,7 @@ display: inline;
 <nav role="doc-toc" id="nav"> 
 <ol>
   <li> <a href="#nav" type="text/html">Contents</a> </li>
-  <li> <a href="html/c001.html" type="text/html">Looming</a> </li>
+  <li> <a href="html/c001.html" type="text/html" data-media-overlay-ref="ch01smil">Loomings</a> </li>
   <li> <a href="html/c001.html" type="text/html">The Spouter-inn</a> </li>
 
 <!--this is a somewhat simplified version of example 40 in the indexing spec. It actually seems more useful to me, as it does supply labels for navigation, and I'm not sure of the utility of yet another wrapper around multiple files that cover the same letter of the alphabet-->
