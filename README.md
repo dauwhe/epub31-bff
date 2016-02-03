@@ -13,6 +13,7 @@ I have collected several different proposals for how best to do this.
 {
   "metadata": {
     "title": "Moby Dick",
+    "creator": "Herman Melville",
     "language": "en",
     "identifier": {
       "type": "unique-identifier",
@@ -25,23 +26,36 @@ I have collected several different proposals for how best to do this.
     "links": [{
       "href": "cover.jpg",
       "type": "image/jpeg",
+      "title": "Cover Page",
       "properties": "cover-image"
     }, {
+      "href": "map.svg",
+      "type": "image/svg+xml",
+      "title": "Map"
+    }, {
       "href": "c001.html",
-      "type": "text/html"
+      "type": "text/html",
+      "title": "Looming"
     }, {
       "href": "c002.html",
-      "type": "text/html"
-    }, {
-      "href": "toc.html",
       "type": "text/html",
-      "properties": "nav"
+      "title": "The Spouter-Inn"
     }],
 
     "manifest": {
       "links": [{
         "href": "style.css",
         "type": "text/css"
+      }, {
+        "href": "whale.jpg",
+        "type": "image/jpeg",
+      }, {
+        "href": "boat.svg",
+        "type": "image/svg+xml"
+      }, {
+        "href": "notes.html",
+        "type": "text/html",
+        "title": "Notes from the editor"
       }]
     }
   }
@@ -70,15 +84,30 @@ I have collected several different proposals for how best to do this.
       "type": "image/jpeg",
       "properties": "cover-image"
     }, {
+      "href": "map.svg",
+      "type": "image/svg+xml"
+    }, {
       "href": "c001.html",
       "type": "text/html"
     }, {
       "href": "c002.html",
       "type": "text/html"
     }, {
+      "href": "whale.jpg",
+      "type": "image/jpeg",
+      "sequence": false
+    }, {
+      "href": "boat.svg",
+      "type": "image/svg+xml",
+      "sequence": false
+    }, {
       "href": "toc.html",
       "type": "text/html",
       "properties": "nav"
+    }, {
+      "href": "notes.html",
+      "type": "text/html",
+      "sequence": false
     }, {
       "href": "style.css",
       "type": "text/css"
@@ -104,11 +133,15 @@ I have collected several different proposals for how best to do this.
 
   <link href="style.css" type="text/css" rel="prefetch">
   <link href="cover.jpg" type="image/jpeg" role="doc-cover" rel="prefetch">
+  <link href="whale.jpg" type="image/jpeg" rel="prefetch">
+  <link href="boat.svg" type="image/svg+xml" rel="prefetch">
+  <link href="notes.html" type="text/html" rel="prefetch" title="Notes from the editor">
 </head>
 <body>
   <nav role="doc-toc" id="nav"> 
     <ol>
       <li> <a href="#nav" type="text/html">Contents</a> </li>
+      <li> <a href="map.svg" type="image/svg+xml">Map</a> </li>
       <li> <a href="c001.html" type="text/html">Looming</a> </li>
       <li> <a href="c002.html" type="text/html">The Spouter-inn</a> </li>
     </ol>
