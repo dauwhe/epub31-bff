@@ -8,16 +8,25 @@ The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier
 
 EPUB-BFF content documents follow the usual rules of EPUB 3.1.
 
-####Associating an HTML package document with an EPUB-BFF content document
+##nav and index.html
 
-To indicate that an EPUB-BFF content document is associated with a particular HTML package document, use a `link` element in the HTML `head`:
+We propose that all the package information be embedded in the `nav` document, which must be named `index.html` at the top level of the file system container. 
+
+##metadata
+
+Metadata in `index.html` applies to the publication as a whole.
+
+###EPUB-BFF minimal Metadata
 
 ```html
-<link href="index" rel="package" type="text/html" />
+  <meta id="title" name="dc:title" content="Moby-Dick, or, The Whale">
+  <meta id="pub-id" name="dc:identifier" content="9780000000001">
+  <meta id="modified-date" name="dcterms:modified" content="2015-09-29T17:00:00Z">
+  <meta id="language" name="dc:language" content="en-US">
 ```
 
 
->**Note:** EPUB 3.1 now allows the HTML serialization of HTML5. 
+
 
 
 ##Example
