@@ -91,12 +91,13 @@ But metadata can often be more complex than this, and at some point it makes mor
 In EPUB, the manifest lists all publication resources, and the spine describes their ordering. EPUB-BFF uses the required `nav` element to describe the nature and ordering of the primary publication content documents. Other publication resources are listed as links in the head of index.html. 
 
 ###Non-spine resources
+```html
   <link href="style.css" type="text/css" rel="prefetch">
   <link href="cover.jpg" type="image/jpeg" role="doc-cover" rel="prefetch">
   <link href="whale.jpg" type="image/jpeg" rel="prefetch">
   <link href="boat.svg" type="image/svg+xml" rel="prefetch">
   <link href="notes.html" type="text/html" rel="prefetch" title="Notes from the editor">
-```html
+```
 
 ###Spine resources
 ```html
