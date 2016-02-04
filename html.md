@@ -93,7 +93,7 @@ In EPUB, the manifest lists all publication resources, and the spine describes t
 ###Non-spine resources
 ```html
   <link href="style.css" type="text/css" rel="prefetch">
-  <link href="cover.jpg" type="image/jpeg" role="doc-cover" rel="prefetch">
+  <link href="cover.jpg" type="image/jpeg" rel="doc-cover prefetch">
   <link href="whale.jpg" type="image/jpeg" rel="prefetch">
   <link href="boat.svg" type="image/svg+xml" rel="prefetch">
   <link href="notes.html" type="text/html" rel="prefetch" title="Notes from the editor">
@@ -170,7 +170,7 @@ Nested lists in nav can be used to group content documents into collections, wit
 <ol>
 ...
   <li> <span>Subject Index</span> 
-  <ol data-referenced-role="doc-index">
+  <ol data-link-role="doc-index">
     <li> <a href="html/subjectIndex-a01.html" type="text/html">A</a> </li>
     <li> <a href="html/subjectIndex-a02.html" type="text/html">A</a> </li>
     <li> <a href="html/subjectIndex-a03.html" type="text/html">A</a> </li>
@@ -186,3 +186,5 @@ Nested lists in nav can be used to group content documents into collections, wit
 ```
 
 >[**Issue 4**](https://github.com/dauwhe/epub31-bff/issues/4): How do we identify the semantic role of documents or structures we are linking to? Aria roles only apply to the things themselves.
+
+> Using DPUB-ARIA role values in the `rel` attribute might be interesting :)
