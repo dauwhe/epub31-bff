@@ -8,6 +8,13 @@ The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier
 
 EPUB-BFF content documents follow the usual rules of EPUB 3.1.
 
+###Referring to `index.html` from content documents
+
+```html
+<link rel="contents" href="index.html">
+
+```
+
 ##nav and index.html
 
 We propose that all the package information be embedded in the `nav` document, which must be named `index.html` and located at the top level of the file system container. 
@@ -31,7 +38,7 @@ In keeping with the focus on the web, publication metadata should be easily unde
   <meta id="language" property="schema:inLanguage" content="en-US">
 ```
 
-But metadata can often be more complex than this, and at some point it makes more sense to use JSON-LD embedded in the document head. Here's another example, again using schema.org:
+But metadata is often more complex than this, and at some point it makes more sense to use JSON-LD embedded in the document head. Here's another example, again using schema.org:
 
 ```json
 <script type="application/json+ld">
@@ -113,6 +120,8 @@ In EPUB, the manifest lists all publication resources, and the spine describes t
 ```
 
 
+
+
 ##Complications
 
 EPUB, and especially related specifications such as Multiple-Rendition Documents and Indexing, often include requirements for more complex information about a publication. 
@@ -133,6 +142,11 @@ This requires the media overlay link in the head to have an ID:
 ```
 
 EPUB also lists the duration of each media overlay audio file, as well as the total duration of all the audio for a publication.
+
+```html
+<link href="audio/c001.mp3" type="audio/mpeg" typeof="schema:AudioObject" property="schema:duration" content="T32M19S">
+
+```
 
 >**Issue**: how to do this? 
 

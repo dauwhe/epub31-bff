@@ -132,7 +132,7 @@ I have collected several different proposals for how best to do this.
   <meta id="language" property="schema:inLanguage" content="en-US">
 
   <link href="style.css" type="text/css" rel="prefetch">
-  <link href="cover.jpg" type="image/jpeg" role="doc-cover" rel="prefetch">
+  <link href="cover.jpg" type="image/jpeg" rel="prefetch icon" sizes="any">
   <link href="whale.jpg" type="image/jpeg" rel="prefetch">
   <link href="boat.svg" type="image/svg+xml" rel="prefetch">
   <link href="notes.html" type="text/html" rel="prefetch" title="Notes from the editor">
