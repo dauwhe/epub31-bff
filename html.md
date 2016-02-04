@@ -170,7 +170,7 @@ Nested lists in nav can be used to group content documents into collections, wit
 <ol>
 ...
   <li> <span>Subject Index</span> 
-  <ol role="doc-index">
+  <ol data-referenced-role="doc-index">
     <li> <a href="html/subjectIndex-a01.html" type="text/html">A</a> </li>
     <li> <a href="html/subjectIndex-a02.html" type="text/html">A</a> </li>
     <li> <a href="html/subjectIndex-a03.html" type="text/html">A</a> </li>
@@ -184,3 +184,5 @@ Nested lists in nav can be used to group content documents into collections, wit
 </nav> 
 
 ```
+
+>**Issue**: How do we identify the semantic role of documents or structures we are linking to? Aria roles only apply to the things themselves.
