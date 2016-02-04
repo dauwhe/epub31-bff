@@ -185,4 +185,4 @@ Nested lists in nav can be used to group content documents into collections, wit
 
 ```
 
->[**Issue 4**](issues/4): How do we identify the semantic role of documents or structures we are linking to? Aria roles only apply to the things themselves.
+>[**Issue 4**](https://github.com/dauwhe/epub31-bff/issues/4): How do we identify the semantic role of documents or structures we are linking to? Aria roles only apply to the things themselves.
