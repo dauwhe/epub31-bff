@@ -66,6 +66,10 @@ I have collected several different proposals for how best to do this.
 ###[Proposal 2: JSON-LD in NAV](json-mixed.md), where the JSON+LD package is embedded in the `nav` document
 
 #####Example of proposal 2
+
+>**Issue**: The JSON-LD is a disaster. Suggestions for improvements from people with actual knowledge of linked data are welcome!
+
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
