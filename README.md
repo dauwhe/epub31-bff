@@ -63,61 +63,93 @@ I have collected several different proposals for how best to do this.
 
 ```
 
-###[Proposal 2: JSON serialization](json-mixed.md), with a single array functioning as manifest and spine
+###[Proposal 2: JSON-LD in NAV](json-mixed.md), where the JSON+LD package is embedded in the `nav` document
 
 #####Example of proposal 2
-```json
+```html json
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Moby-Dick</title>
+
+<script type="application/json+ld">
 {
-  "metadata": {
-    "title": "Moby Dick",
-    "language": "en",
-    "identifier": {
-      "type": "unique-identifier",
-      "value": "9780000000001",
-      "modified": "2015-09-29T17:00:00Z"
-    }
+  "@context": {
+    "schema": "http://schema.org/",
+    "bff": "http://idpf.org/2016/bff/"
   },
 
-  "rendition": {
-    "links": [{
-      "href": "cover.jpg",
-      "type": "image/jpeg",
-      "properties": "cover-image"
+  "@type": "schema:Book",
+  "schema:name": "Moby-Dick",
+  "schema:dateModified": "2015-09-29T17:00:00Z",
+  "schema:ISBN": "9780000000001",
+  "schema:inLanguage": "en",
+
+  "bff:collection": {
+    "@type": "bff:rendition",
+    "bff:links": [{
+      "@type": "schema:mediaObject",
+      "schema:url": "cover.jpg",
+      "schema:fileformat": "image/jpeg",
+      "bff:properties": "cover-image"
     }, {
-      "href": "map.svg",
-      "type": "image/svg+xml"
+      "@type": "schema:mediaObject",
+      "schema:url": "map.svg",
+      "schema:fileformat": "image/svg+xml"
     }, {
-      "href": "c001.html",
-      "type": "text/html"
+      "@type": "schema:mediaObject",
+      "schema:url": "c001.html",
+      "schema:fileformat": "text/html"
     }, {
-      "href": "c002.html",
-      "type": "text/html"
-    }, {
-      "href": "whale.jpg",
-      "type": "image/jpeg",
-      "sequence": false
-    }, {
-      "href": "boat.svg",
-      "type": "image/svg+xml",
-      "sequence": false
-    }, {
-      "href": "toc.html",
-      "type": "text/html",
-      "properties": "nav"
-    }, {
-      "href": "notes.html",
-      "type": "text/html",
-      "sequence": false
-    }, {
-      "href": "style.css",
-      "type": "text/css"
-    }]
+      "@type": "schema:mediaObject",
+      "schema:url": "c002.html",
+      "schema:fileformat": "text/html"
+    }],
+
+    "bff:collection": {
+      "@type": "bff:manifest",
+      "bff:links": [{
+        "@type": "schema:mediaObject",
+        "schema:url": "style.css",
+        "schema:fileformat": "text/css"
+      }, {
+        "@type": "schema:mediaObject",
+        "schema:url": "whale.jpg",
+        "schema:fileformat": "image/jpeg"
+      }, {
+        "@type": "schema:mediaObject",
+        "schema:url": "boat.svg",
+        "schema:fileformat": "image/svg+xml"
+      }, {
+        "@type": "schema:mediaObject",
+        "schema:url": "notes.html",
+        "schema:fileformat": "text/html",
+        "schema:name": "Notes from the editor"
+      }]
+    }
   }
 }
+</script>
+</head>
+<body>
+
+<nav role="doc-toc" id="nav"> 
+<ol>
+  <li><a href="cover.jpg">Cover Page</a></li>
+  <li><a href="map.svg">Map</a></li>
+  <li><a href="html/c001.html">Loomings</a></li>
+  <li><a href="html/c001.html">The Spouter-inn</a></li>
+</ol>
+</nav> 
+
+</body>
+</html>
+
 ```
 
 
-###[Proposal 3: HTML serialization](html.md)
+###[Proposal 3: Pure HTML serialization](html.md)
 
 #####Example of proposal 3
 ```html
@@ -140,10 +172,10 @@ I have collected several different proposals for how best to do this.
 <body>
   <nav role="doc-toc" id="nav"> 
     <ol>
-      <li> <a href="#nav" type="text/html">Contents</a> </li>
-      <li> <a href="map.svg" type="image/svg+xml">Map</a> </li>
-      <li> <a href="c001.html" type="text/html">Looming</a> </li>
-      <li> <a href="c002.html" type="text/html">The Spouter-inn</a> </li>
+      <li> <a href="#nav" type="text/html" rel="prefetch">Contents</a> </li>
+      <li> <a href="map.svg" type="image/svg+xml" rel="prefetch">Map</a> </li>
+      <li> <a href="c001.html" type="text/html" rel="prefetch">Looming</a> </li>
+      <li> <a href="c002.html" type="text/html" rel="prefetch">The Spouter-inn</a> </li>
     </ol>
   </nav> 
 </body>
