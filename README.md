@@ -66,7 +66,7 @@ I have collected several different proposals for how best to do this.
 ###[Proposal 2: JSON-LD in NAV](json-mixed.md), where the JSON+LD package is embedded in the `nav` document
 
 #####Example of proposal 2
-```html json
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
