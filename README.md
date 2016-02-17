@@ -63,92 +63,58 @@ I have collected several different proposals for how best to do this.
 
 ```
 
-###[Proposal 2: JSON-LD in NAV](json-mixed.md), where the JSON+LD package is embedded in the `nav` document
+###Proposal 2: JSON-LD
 
-#####Example of proposal 2
+#####Example of proposal 2 using only schema.org vocabulary
 
 >**Issue**: The JSON-LD is a disaster. Suggestions for improvements from people with actual knowledge of linked data are welcome!
 
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Moby-Dick</title>
-
-<script type="application/json+ld">
+```json
 {
   "@context": {
-    "schema": "http://schema.org/",
-    "bff": "http://idpf.org/2016/bff/"
-  },
 
-  "@type": "schema:Book",
-  "schema:name": "Moby-Dick",
-  "schema:dateModified": "2015-09-29T17:00:00Z",
-  "schema:ISBN": "9780000000001",
-  "schema:inLanguage": "en",
-
-  "bff:collection": {
-    "@type": "bff:rendition",
-    "bff:links": [{
-      "@type": "schema:mediaObject",
-      "schema:url": "cover.jpg",
-      "schema:fileformat": "image/jpeg",
-      "bff:properties": "cover-image"
-    }, {
-      "@type": "schema:mediaObject",
-      "schema:url": "map.svg",
-      "schema:fileformat": "image/svg+xml"
-    }, {
-      "@type": "schema:mediaObject",
-      "schema:url": "c001.html",
-      "schema:fileformat": "text/html"
-    }, {
-      "@type": "schema:mediaObject",
-      "schema:url": "c002.html",
-      "schema:fileformat": "text/html"
-    }],
-
-    "bff:collection": {
-      "@type": "bff:manifest",
-      "bff:links": [{
-        "@type": "schema:mediaObject",
-        "schema:url": "style.css",
-        "schema:fileformat": "text/css"
-      }, {
-        "@type": "schema:mediaObject",
-        "schema:url": "whale.jpg",
-        "schema:fileformat": "image/jpeg"
-      }, {
-        "@type": "schema:mediaObject",
-        "schema:url": "boat.svg",
-        "schema:fileformat": "image/svg+xml"
-      }, {
-        "@type": "schema:mediaObject",
-        "schema:url": "notes.html",
-        "schema:fileformat": "text/html",
-        "schema:name": "Notes from the editor"
-      }]
+    "title": "http://schema.org/name",
+    "creator": "http://schema.org/author",
+    "identifier": "http://schema.org/isbn",
+    "modified": "http://schema.org/dateModified",
+    "language": "http://schema.org/inLanguage",
+    "links": {
+      "@id": "http://schema.org/hasPart",
+      "@type": "@id"
+    },
+    "href": {
+      "@id": "http://schema.org/url",
+      "@type": "@id"
+    },
+    "type": "http://schema.org/fileFormat",
+    "rendition": {
+      "@id": "http://schema.org/encoding",
+      "@type": "@id"
     }
+  },
+  "@type": "http://schema.org/Book",
+  "title": "Moby-Dick",
+  "creator": "Herman Melville",
+  "identifier": "9780000000000",
+  "modified": "2016-02-01T15:45:00Z",
+  "language": "en-US",
+  "rendition": {
+  "links": [{
+      "href": "cover.jpg",
+      "type": "image/jpeg"
+    }, {
+      "href": "map.svg",
+      "type": "image/svg+xml"
+    }, {
+      "href": "c001.html",
+      "type": "text/html"
+    }, {
+      "href": "c002.html",
+      "type": "text/html"
+    }]
   }
 }
-</script>
-</head>
-<body>
-
-<nav role="doc-toc" id="nav"> 
-<ol>
-  <li><a href="cover.jpg">Cover Page</a></li>
-  <li><a href="map.svg">Map</a></li>
-  <li><a href="html/c001.html">Loomings</a></li>
-  <li><a href="html/c001.html">The Spouter-inn</a></li>
-</ol>
-</nav> 
-
-</body>
-</html>
 
 ```
 
