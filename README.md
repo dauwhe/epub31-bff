@@ -25,36 +25,36 @@ I have collected several different proposals for how best to do this.
   "rendition": {
     "links": [{
       "href": "cover.jpg",
-      "type": "image/jpeg",
+      "media-type": "image/jpeg",
       "title": "Cover Page",
       "properties": "cover-image"
     }, {
       "href": "map.svg",
-      "type": "image/svg+xml",
+      "media-type": "image/svg+xml",
       "title": "Map"
     }, {
       "href": "c001.html",
-      "type": "text/html",
+      "media-type": "text/html",
       "title": "Looming"
     }, {
       "href": "c002.html",
-      "type": "text/html",
+      "media-type": "text/html",
       "title": "The Spouter-Inn"
     }],
 
     "manifest": {
       "links": [{
         "href": "style.css",
-        "type": "text/css"
+        "media-type": "text/css"
       }, {
         "href": "whale.jpg",
-        "type": "image/jpeg",
+        "media-type": "image/jpeg",
       }, {
         "href": "boat.svg",
-        "type": "image/svg+xml"
+        "media-type": "image/svg+xml"
       }, {
         "href": "notes.html",
-        "type": "text/html",
+        "media-type": "text/html",
         "title": "Notes from the editor"
       }]
     }
@@ -65,54 +65,71 @@ I have collected several different proposals for how best to do this.
 
 ###Proposal 2: JSON-LD
 
-#####Example of proposal 2 using only schema.org vocabulary
+#####Example of proposal 2 using some schema.org terms
 
->**Issue**: The JSON-LD is a disaster. Suggestions for improvements from people with actual knowledge of linked data are welcome!
+>**Issue**: The JSON-LD is a disaster. Suggestions for improvements from people with actual knowledge of linked data are welcome! I especially have questions about how to deal with nesting in @context. One version of the proposal has both identifier/type and link/type. How to give different contexts for those two different type keys?
+
+
+>**Issue**: Of course, there's no good mapping to schema.org for some of these properties.
 
 
 ```json
 {
   "@context": {
-
     "title": "http://schema.org/name",
     "creator": "http://schema.org/author",
-    "identifier": "http://schema.org/isbn",
-    "modified": "http://schema.org/dateModified",
-    "language": "http://schema.org/inLanguage",
-    "links": {
-      "@id": "http://schema.org/hasPart",
+    "identifier": "http://idpf.org/2016/bff/identifier",
+    "value": {
+
+      "@id": "http://schema.org/isbn",
       "@type": "@id"
+
     },
+    "type": "http://idpf.org/2016/bff/identifier-type",
+    "modified": "http://schema.org/dateModified",
+
+    "language": "http://schema.org/inLanguage",
+    "link": "http://schema.org/hasPart",
     "href": {
       "@id": "http://schema.org/url",
       "@type": "@id"
     },
-    "type": "http://schema.org/fileFormat",
-    "rendition": {
-      "@id": "http://schema.org/encoding",
-      "@type": "@id"
-    }
+    "media-type": "http://schema.org/fileFormat",
+    "rendition": "http://schema.org/encoding",
+    "manifest": "http://schema.org/encoding",
+    "metadata": "http://idpf.org/2016/bff/metadata"
+
   },
   "@type": "http://schema.org/Book",
-  "title": "Moby-Dick",
-  "creator": "Herman Melville",
-  "identifier": "9780000000000",
-  "modified": "2016-02-01T15:45:00Z",
-  "language": "en-US",
+  "metadata": {
+    "title": "Moby-Dick",
+    "creator": "Herman Melville",
+    "identifier": {
+      "type": "unique-identifier",
+      "value": "9999999999999",
+      "modified": "2016-02-18T10:32:18Z"
+
+    },
+
+    "language": "en-US"
+  },
   "rendition": {
-  "links": [{
-      "href": "cover.jpg",
-      "type": "image/jpeg"
-    }, {
-      "href": "map.svg",
-      "type": "image/svg+xml"
-    }, {
+    "link": [{
       "href": "c001.html",
-      "type": "text/html"
+      "media-type": "text/html"
     }, {
       "href": "c002.html",
-      "type": "text/html"
-    }]
+      "media-type": "text/html"
+    }],
+    "manifest": {
+      "link": [{
+        "href": "style.css",
+        "media-type": "text/css"
+      }, {
+        "href": "cover.jpg",
+        "media-type": "image/jpeg"
+      }]
+    }
   }
 }
 
