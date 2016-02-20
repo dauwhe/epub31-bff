@@ -6,20 +6,23 @@ The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier
 
 I have collected several different proposals for how best to do this.
 
-###[Proposal 1: JSON serialization](json-ordered.md) with separate spine and manifest
+###[Proposal 1: JSON serialization](json-ordered.md) with separate spine and manifest, and an external JSON-LD context
 
 #####Example of proposal 1
+
+>**Note**: Metadata and JSON-LD for this proposal are still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. All extensions would have to use full IRIs since additional context definition won't be allowed. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
+
 ```json
 {
+  "@context": "http://idpf.org/epub.jsonld",
+  "@type": "http://schema.org/Book",
+  
   "metadata": {
+    "identifier": "urn:isbn:9780000000001",
     "title": "Moby Dick",
     "creator": "Herman Melville",
     "language": "en",
-    "identifier": {
-      "type": "unique-identifier",
-      "value": "9780000000001",
-      "modified": "2015-09-29T17:00:00Z"
-    }
+    "publisher": "Whale Publishing Ltd."
   },
 
   "rendition": {
@@ -48,7 +51,7 @@ I have collected several different proposals for how best to do this.
         "media-type": "text/css"
       }, {
         "href": "whale.jpg",
-        "media-type": "image/jpeg",
+        "media-type": "image/jpeg"
       }, {
         "href": "boat.svg",
         "media-type": "image/svg+xml"
@@ -60,7 +63,32 @@ I have collected several different proposals for how best to do this.
     }
   }
 }
+```
 
+If we use another example with more complex metadata expression and an extension:
+
+```json
+{
+  "@context": "http://idpf.org/epub.jsonld",
+  "@type": "http://schema.org/Book",
+  
+  "metadata": {
+    "identifier": "urn:isbn:9780000000002",
+    "title": {
+      "en": "A Journey into the Center of the Earth",
+      "fr": "Voyage au centre de la Terre"
+    },
+    "sort-as": "Journey into the Center of the Earth, A",
+    "creator": {
+      "name": "Jules Verne",
+      "identifier": "http://isni.org/isni/0000000121400562",
+      "sort-as": "Verne, Jules"
+    },
+    "language": ["en", "fr"],
+    "publisher": "SciFi Publishing Inc.",
+    "http://schema.org/isFamilyFriendly": true
+  }
+}
 ```
 
 ###Proposal 2: JSON-LD
