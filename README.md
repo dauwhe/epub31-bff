@@ -125,6 +125,8 @@ If we use another example with more complex metadata expression and an extension
 
 ###[Proposal 2: Pure HTML serialization](html.md)
 
+We use the `nav` file to describe the content sequence, as well as providing metadata for the entire publication. 
+
 #####Example of proposal 2
 ```html
 <!DOCTYPE html>
@@ -136,7 +138,7 @@ If we use another example with more complex metadata expression and an extension
   <meta id="pub-id" property="schema:isbn" content="9780000000001">
   <meta id="modified-date" property="schema:dateModified" content="2015-09-29T17:00:00Z">
   <meta id="language" property="schema:inLanguage" content="en-US">
-
+  <!--list non-spine files here, to allow caching, etc-->
   <link href="style.css" type="text/css">
   <link href="cover.jpg" type="image/jpeg" rel="icon" sizes="any">
   <link href="whale.jpg" type="image/jpeg">
