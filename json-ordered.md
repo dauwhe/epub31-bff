@@ -420,7 +420,11 @@ The key for a collection is the name of the collection type. In the following ex
       {
         "href": "xhtml/chapter03.xhtml",
         "type": "application/xhtml+xml",
-        "media-overlay": "chapter3_audio.smil"
+        "links": {
+            "type:": "application/smil+xml",
+            "href": "chapter3_audio.smil",
+            "rel": "media-overlay"
+         }
       }
     ],
 

@@ -4,11 +4,10 @@ EPUB as it exists today is not directly usable by a web browser. The web-friendl
 
 The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier for web developers to display EPUB content by [1] allowing an unzipped ("exploded") publication, and [2] by providing an alternative serialization of the information in container.xml and the package document(s).
 
-I have collected several different proposals for how best to do this.
 
-###[Proposal 1: JSON-LD serialization](json-ordered.md) with separate spine and manifest, and an external JSON-LD context
+###[JSON-LD serialization](json-ordered.md) with separate spine and manifest, and an external JSON-LD context
 
-#####Example of proposal 1
+#####Example
 
 >**Note**: Metadata and JSON-LD for this proposal are still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. All extensions would have to use full IRIs since additional context definition won't be allowed. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
@@ -123,41 +122,7 @@ If we use another example with more complex metadata expression and an extension
 
 
 
-###[Proposal 2: Pure HTML serialization](html.md)
 
-We use the `nav` file to describe the content sequence, as well as providing metadata for the entire publication. 
-
-#####Example of proposal 2
-```html
-<!DOCTYPE html>
-<html lang="en" prefix="schema: http://schema.org/">
-<head typeof="schema:Book">
-<meta charset="utf-8" />
-<title>Moby-Dick</title>
-  <meta id="title" property="schema:name" content="Moby-Dick, or, The Whale">
-  <meta id="pub-id" property="schema:isbn" content="9780000000001">
-  <meta id="modified-date" property="schema:dateModified" content="2015-09-29T17:00:00Z">
-  <meta id="language" property="schema:inLanguage" content="en-US">
-  <!--list non-spine files here, to allow caching, etc-->
-  <link href="style.css" type="text/css">
-  <link href="cover.jpg" type="image/jpeg" rel="icon" sizes="any">
-  <link href="whale.jpg" type="image/jpeg">
-  <link href="boat.svg" type="image/svg+xml">
-  <link href="notes.html" type="text/html" title="Notes from the editor">
-</head>
-<body>
-  <nav role="doc-toc" id="nav"> 
-    <ol>
-      <li> <a href="#nav" type="text/html">Contents</a> </li>
-      <li> <a href="map.svg" type="image/svg+xml">Map</a> </li>
-      <li> <a href="c001.html" type="text/html">Looming</a> </li>
-      <li> <a href="c002.html" type="text/html">The Spouter-inn</a> </li>
-    </ol>
-  </nav> 
-</body>
-</html>
-
-```
 
 ###Acknowledgements
 
