@@ -22,7 +22,8 @@ We can describe everything we need to know about the bundle of documents that fo
 
 3. A rendition consists of metadata ("rendition metadata"), links, and a manifest. The links enumerate the components of the publication, their ordering, and their properties.
 
-## A simple example (before we get into details, and avoiding linked data)
+
+#####Example 1 (omitting linked data and other enhancements)
 
 ```json
 {
@@ -330,7 +331,7 @@ The key for a collection is the name of the collection type. In the following ex
 
 #### Issue 5: I question the utility of this. 
 
-#####Example 7: index group
+#####Example 5: index group
 
 
 ```json
@@ -403,7 +404,7 @@ The key for a collection is the name of the collection type. In the following ex
 
 ###Media overlays
 
-#####Example 8: media overlays
+#####Example 6: media overlays
 ```json
 {
   "metadata": {
