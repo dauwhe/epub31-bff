@@ -68,7 +68,7 @@ We can describe everything we need to know about the bundle of documents that fo
   }
 
 }
-
+```
 
 #### Issue 1: Renditions.
 
