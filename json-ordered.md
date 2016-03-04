@@ -4,6 +4,80 @@ EPUB as it exists today is not directly usable by a web browser. The web-friendl
 
 The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier for web developers to display EPUB content by [1] allowing an unzipped ("exploded") publication, and [2] by providing an alternative JSON serialization of the information in container.xml and the package document(s).
 
+##Introduction: The Browser-Friendly Format (aka "BFF")
+
+EPUB exists because the web doesn't allow us to easily speak about
+collections of documents. Web documents can link to each other, and link
+relations let you say a few things about what's on the other end of a
+link. But you can't say two documents are part of a larger entity. You
+can't say this metadata applies to a group of documents.
+
+EPUB has filled that gap with the package file, which includes publication metadata, a list of files that make up the publication ("manifest"), and information about their ordering ("spine"). However, there's a lot of duplication and indirection involved in the XML, and we believe a simpler conceptual model is possible. 
+
+We can describe everything we need to know about the bundle of documents that forms a publication with a relatively simple JSON structure. It consists of:
+
+1. Metadata about the publication as a whole.
+
+2. One or more renditions, or distinct representations of the publications, which may differ in language, use of fixed layout, etc. Most publications consist of a single rendition.
+
+3. A rendition consists of metadata ("rendition metadata"), links, and a manifest. The links enumerate the components of the publication, their ordering, and their properties.
+
+## A simple example (before we get into details, and avoiding linked data)
+
+```json
+{
+"metadata": {
+  "title": "Moby-Dick",
+  "identifier": "978031600000X",
+  "language": "en",
+  "modified": "2015-09-29T17:00:00Z"
+},
+
+"rendition": {
+    "links": [{
+      "href": "cover.jpg",
+      "media-type": "image/jpeg",
+      "properties": "cover-image"
+    }, {
+      "href": "map.svg",
+      "media-type": "image/svg+xml"
+    }, {
+      "href": "c001.html",
+      "media-type": "text/html"
+    }, {
+      "href": "c002.html",
+      "media-type": "text/html"
+    }],
+
+    "manifest": {
+      "links": [{
+        "href": "style.css",
+        "media-type": "text/css"
+      }, {
+        "href": "whale.jpg",
+        "media-type": "image/jpeg"
+      }, {
+        "href": "boat.svg",
+        "media-type": "image/svg+xml"
+      }, {
+        "href": "notes.html",
+        "media-type": "text/html",
+        "title": "Notes from the editor"
+      }]
+    }
+  }
+
+}
+
+
+#### Issue 1: Renditions.
+
+Given that most books contain a single rendition, is there a way to avoiding having a rendition object in single-rendition books?
+
+#### Issue 2: Can rendition/links/manifest be simplified?
+
+A rendition object contains a link array which contains objects describing the files, unless they are not spine items, in which case they're one level deeper in a manifest object. It's possible to use a single array for manifest and spine, and use either a key-value pair or a convention to determine which items are in the "spine".
+
 ##Content Documents
 
 EPUB-BFF content documents follow the usual rules of EPUB 3.1.
@@ -13,7 +87,7 @@ EPUB-BFF content documents follow the usual rules of EPUB 3.1.
 To indicate that an EPUB-BFF content document is associated with a particular JSON package document, use a `link` element in the HTML `head`:
 
 ```html
-<link href="package.json" rel="package" type="application/vnd.epub.package+json" />
+<link href=package.json rel=package type=application/vnd.epub.package+json>
 ```
 
 
@@ -26,66 +100,18 @@ Ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31]. EPUB
 
 The JSON package document described below must be named `package.json` and must appear at the top level of the file system container.
 
+#### Issue 3: Naming and location of JSON Package Document
+
 ##The JSON Package Document
 
-###Introduction
-
-EPUB reading systems have traditionally required a large amount of information about the publication, without parsing the individual files of said publication. `container.xml`, for simple EPUBs, exists only to point to the package file, which in turn describes:
-
-1. Publication metadata, such as title, creator, identifiers, language, etc.
-2. Rendition metadata, providing hints to the reading system on how to display the content.
-3. A manifest, describing every component file of the publication, their media types, and various special properties.
-4. A spine, describing the linear reading order of the publication
-
-A single JSON package document can replace both container.xml and the package file(s). All of these files consist of essentially two things—metadata and links. So with only the concepts of metadata and links, we can express document metadata, manifests, the spine, rendition metadata, and collections.
 
 ###Data Model
 
-The JSON package file consists of a metadata object, followed by one or more collection objects. EPUB 3.0.1 defines a collection as "a related group of resources." We are extending this term so that any rendition of a publication can be described as a collection. The key for a collection is the name of that collection. An EPUB-BFF must have at least one rendition collection. 
+The JSON package file consists of a metadata object, followed by one or more collection objects. EPUB 3.0.1 defines a collection as "a related group of resources." We are extending this term so that any rendition of a publication can be described as a collection. The key for a collection is the name of that collection. An EPUB-BFF must have one rendition collection (if there is more than one rendition, a rendition array is used).
 
 A collection consists of metadata, links, and subcollections. The link array describes all publications in the linear reading order (aka "spine"). Other resources are listed in a `manifest` collection. 
 
 Note that this avoids the duplication inherent in the manifest/spine model of EPUB, as well as the need for id and idrefs.
-
-#####Example 1. Simple JSON package document. Note the cover image and the TOC are part of the linear reading order. 
-```json
-{
-  "metadata": {
-    "title": "Moby Dick",
-    "language": "en",
-    "identifier": {
-      "type": "unique-identifier",
-      "value": "9780000000001",
-      "modified": "2015-09-29T17:00:00Z"
-    }
-  },
-
-  "rendition": {
-    "links": [{
-      "href": "cover.jpg",
-      "type": "image/jpeg",
-      "properties": "cover-image"
-    }, {
-      "href": "c001.html",
-      "type": "text/html"
-    }, {
-      "href": "c002.html",
-      "type": "text/html"
-    }, {
-      "href": "toc.html",
-      "type": "text/html",
-      "properties": "nav"
-    }],
-
-    "manifest": {
-      "links": [{
-        "href": "style.css",
-        "type": "text/css"
-      }]
-    }
-  }
-}
-```
 
 
 ###The `links` object
@@ -111,7 +137,7 @@ Each publication component is described by a `links` object, which consists of t
 Each EPUB-BFF must have at least one rendition collection, but can have as many as required. If there is more than one rendition collection, each must have rendition metadata to allow the reading system to select the proper rendition.
 
 
->**Issue:** Rendition mapping
+#### Issue 4: Rendition Mapping
 
 
 #####Example 2: Multiple renditions with selection metadata
@@ -120,11 +146,8 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
   "metadata": {
     "title": "Chouinard",
     "language": "en",
-    "identifier": {
-      "type": "unique-identifier",
-      "value": "42",
-      "modified": "2016-02-01T15:45:00Z"
-    },
+    "identifier": "42",
+    "modified": "2016-02-01T15:45:00Z",
     "creator": "Yvon Chouinard",
     "description": "Equipment for alpinists",
     "date": "1972-01-01"
@@ -217,10 +240,8 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
     "metadata": {
       "title": "Moby Dick Preview",
       "language": "en-US",
-      "identifier": {
-        "type": "unique-identifier",
-        "value": "9780000000001",
-        "modified": "2015-09-29T17:00:00Z"
+      "identifier": "123456789012X",
+      "modified": "2015-09-29T17:00:00Z"
       }
     },
 
@@ -263,11 +284,8 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
     "title": "Phantom Textbook - Chapter 1",
     "language": "en",
     "type": "distributable-object",
-    "identifier": {
-      "type": "unique-identifier",
-      "value": "urn:uuid:a46825d1-e796-4cc3-a633-5160f529a1e0",
-      "modified": "2014-11-10T19:30:22Z"
-    },
+    "identifier": "urn:uuid:a46825d1-e796-4cc3-a633-5160f529a1e0",
+    "modified": "2014-11-10T19:30:22Z",
     "creator": "Jane Doe",
     "description": "Introduction to the history of phantasms. For sale separately.",
     "source": "urn:isbn:9780987654321",
@@ -310,7 +328,7 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 The key for a collection is the name of the collection type. In the following example, based on Example 40 from the indexing spec, nested collections are used to describe a complex index.
 
->**Issue:** I question the utility of this. 
+#### Issue 6: I question the utility of this. 
 
 #####Example 7: index group
 
@@ -391,11 +409,8 @@ The key for a collection is the name of the collection type. In the following ex
   "metadata": {
     "title": "Audio Book",
     "language": "en",
-    "identifier": {
-      "type": "unique-identifier",
-      "value": "qqq",
-      "modified": "2016-01-01T00:00:01Z"
-    },
+    "identifier": "qqq",
+    "modified": "2016-01-01T00:00:01Z",
     "creator": "Jane Doe"
   },
 
