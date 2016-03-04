@@ -328,7 +328,7 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 The key for a collection is the name of the collection type. In the following example, based on Example 40 from the indexing spec, nested collections are used to describe a complex index.
 
-#### Issue 6: I question the utility of this. 
+#### Issue 5: I question the utility of this. 
 
 #####Example 7: index group
 
