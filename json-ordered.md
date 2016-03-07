@@ -71,12 +71,10 @@ We can describe everything we need to know about the bundle of documents that fo
 }
 ```
 
-#### Issue 1: Renditions.
-
+>**Issue 1: Renditions.**
 Given that most books contain a single rendition, is there a way to avoiding having a rendition object in single-rendition books?
 
-#### Issue 2: Can rendition/links/manifest be simplified?
-
+>**Issue 2: Can rendition/links/manifest be simplified?**
 A rendition object contains a link array which contains objects describing the files, unless they are not spine items, in which case they're one level deeper in a manifest object. It's possible to use a single array for manifest and spine, and use either a key-value pair or a convention to determine which items are in the "spine".
 
 ##Content Documents
@@ -88,7 +86,7 @@ EPUB-BFF content documents follow the usual rules of EPUB 3.1.
 To indicate that an EPUB-BFF content document is associated with a particular JSON package document, use a `link` element in the HTML `head`:
 
 ```html
-<link href=package.json rel=package type=application/vnd.epub.package+json>
+<link href="manifest.pwp" rel="manifest" type="application/epub+json">
 ```
 
 
@@ -101,7 +99,16 @@ Ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31]. EPUB
 
 The JSON package document described below must be named `package.json` and must appear at the top level of the file system container.
 
-#### Issue 3: Naming and location of JSON Package Document
+>**Issue 3: Naming and location of JSON Package Document.**
+Since EPUB BFF is meant to be packaged as an alternate source of metadata record, should we define a location, name and extension for it?
+
+##Relationship to the Navigation Document
+
+>**Issue 4: Title attribute on the links object.**
+EPUB BFF supports a title on each element of the "spine". Should that be a requirement? Should we require it strictly on some links? If we allow images in spine, should they be required to have a title?
+
+>**Issue 5: Is it stil a requirement to have a Navigation Document?**
+Since EPUB BFF can provide the equivalent of a table of contents with a single level of depth (no nesting), is it still a requirement to have a Navigation Document? Should the Navigation Document become optional, for example to provide a more complex structure or provide things that only an HTML text node can do?
 
 ##The JSON Package Document
 
@@ -130,6 +137,8 @@ Each publication component is described by a `links` object, which consists of t
 | duration  | indicates length the linked resource  | subset of SMIL clock value  | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
 
+>**Issue 6: Definition of the links object.** 
+Should we really create a dedicated element for media-overlay? Can we design something more generic instead that could also handle other use cases? EPUB 3.1 introduces duration, do we need other media specific attributes?
 
 ###Types of collections
 
@@ -138,7 +147,8 @@ Each publication component is described by a `links` object, which consists of t
 Each EPUB-BFF must have at least one rendition collection, but can have as many as required. If there is more than one rendition collection, each must have rendition metadata to allow the reading system to select the proper rendition.
 
 
-#### Issue 4: Rendition Mapping
+>**Issue 7: Rendition Mapping.**
+How will rendition mapping work in EPUB BFF? Is it still based on the Navigation Document like in AHL? Can we introduce a new collection role instead and represent it as a collection? Can we inline that info in the rendition itself?
 
 
 #####Example 2: Multiple renditions with selection metadata
@@ -228,13 +238,9 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 ```json
 {
-  "metadata": {
-    ...
-  },
+  "metadata": {},
 
-  "rendition": {
-    ...
-  },
+  "rendition": {},
 
   "preview": {
 
@@ -329,7 +335,8 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 The key for a collection is the name of the collection type. In the following example, based on Example 40 from the indexing spec, nested collections are used to describe a complex index.
 
-#### Issue 5: I question the utility of this. 
+>**Issue 8: Nesting sub-collections in between links.**
+This looks like a bug from the current EPUB spec rather than a feature that should be allowed.
 
 #####Example 5: index group
 
@@ -337,13 +344,9 @@ The key for a collection is the name of the collection type. In the following ex
 ```json
 
 { 
-  "metadata": {
-    ...
-  },
+  "metadata": {},
 
-  "rendition": {
-    ...
-  }
+  "rendition": {},
 
   "index": {
     "links": [{
@@ -476,4 +479,7 @@ The key for a collection is the name of the collection type. In the following ex
   }
 }
 ```
+
+>**Issue 9: How do we support media-overlays?**
+In the previous example, media overlays are assigned to XHTML resources using either a dedicated attribute or a nested link element? What's the best solution for that problem? Fallbacks could also work with a nested link.
 
