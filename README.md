@@ -99,8 +99,8 @@ Ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31]. EPUB
 
 The JSON package document described below must be named `package.json` and must appear at the top level of the file system container.
 
->**Issue 3: Naming and location of JSON Package Document.**
-Since EPUB BFF is meant to be packaged as an alternate source of metadata record, should we define a location, name and extension for it?
+>**Issue 15: Naming and location of JSON package document (https://github.com/dauwhe/epub31-bff/issues/15)**
+
 
 ##Relationship to the Navigation Document
 
