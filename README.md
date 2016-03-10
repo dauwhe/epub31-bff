@@ -146,8 +146,8 @@ Each publication component is described by a `links` object, which consists of t
 Each EPUB-BFF must have at least one rendition collection, but can have as many as required. If there is more than one rendition collection, each must have rendition metadata to allow the reading system to select the proper rendition.
 
 
->**Issue 7: Rendition Mapping.**
-How will rendition mapping work in EPUB BFF? Is it still based on the Navigation Document like in AHL? Can we introduce a new collection role instead and represent it as a collection? Can we inline that info in the rendition itself?
+>**Issue 19: [Rendition mapping in BFF](https://github.com/dauwhe/epub31-bff/issues/19)**
+
 
 
 #####Example 2: Multiple renditions with selection metadata
