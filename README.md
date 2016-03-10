@@ -137,8 +137,7 @@ Each publication component is described by a `links` object, which consists of t
 | duration  | indicates length the linked resource  | subset of SMIL clock value  | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
 
->**Issue 6: Definition of the links object.** 
-Should we really create a dedicated element for media-overlay? Can we design something more generic instead that could also handle other use cases? EPUB 3.1 introduces duration, do we need other media specific attributes?
+>**Issue 18: [Media overlays and the definition of the links object](https://github.com/dauwhe/epub31-bff/issues/18)** 
 
 ###Types of collections
 
