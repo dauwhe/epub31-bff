@@ -74,8 +74,8 @@ We can describe everything we need to know about the bundle of documents that fo
 >**Issue 13: [Simpler serialization for single-rendition publications](https://github.com/dauwhe/epub31-bff/issues/13).**
 
 
->**Issue 2: Can rendition/links/manifest be simplified?**
-A rendition object contains a link array which contains objects describing the files, unless they are not spine items, in which case they're one level deeper in a manifest object. It's possible to use a single array for manifest and spine, and use either a key-value pair or a convention to determine which items are in the "spine".
+>**Issue 14: [Can the links/manifest model be simplified?](https://github.com/dauwhe/epub31-bff/issues/14)**
+
 
 ##Content Documents
 
