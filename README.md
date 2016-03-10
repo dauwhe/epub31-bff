@@ -71,7 +71,7 @@ We can describe everything we need to know about the bundle of documents that fo
 }
 ```
 
->**Issue 13: [Simpler serialization for single-rendition publications](https://github.com/dauwhe/epub31-bff/issues/13).**
+>**Issue 13: [Simpler serialization for single-rendition publications](https://github.com/dauwhe/epub31-bff/issues/13)**
 
 
 >**Issue 14: [Can the links/manifest model be simplified?](https://github.com/dauwhe/epub31-bff/issues/14)**
@@ -99,16 +99,16 @@ Ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31]. EPUB
 
 The JSON package document described below must be named `package.json` and must appear at the top level of the file system container.
 
->**Issue 15: Naming and location of JSON package document (https://github.com/dauwhe/epub31-bff/issues/15)**
+>**Issue 15: [Naming and location of JSON package document] (https://github.com/dauwhe/epub31-bff/issues/15)**
 
 
 ##Relationship to the Navigation Document
 
->**Issue 4: Title attribute on the links object.**
-EPUB BFF supports a title on each element of the "spine". Should that be a requirement? Should we require it strictly on some links? If we allow images in spine, should they be required to have a title?
+>**Issue 16: [Title attribute on the links object](https://github.com/dauwhe/epub31-bff/issues/16)**
 
->**Issue 5: Is it stil a requirement to have a Navigation Document?**
-Since EPUB BFF can provide the equivalent of a table of contents with a single level of depth (no nesting), is it still a requirement to have a Navigation Document? Should the Navigation Document become optional, for example to provide a more complex structure or provide things that only an HTML text node can do?
+
+>**Issue 17: [Can a JSON package file function as a navigation document?](https://github.com/dauwhe/epub31-bff/issues/17)**
+
 
 ##The JSON Package Document
 
