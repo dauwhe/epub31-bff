@@ -335,8 +335,7 @@ Each EPUB-BFF must have at least one rendition collection, but can have as many 
 
 The key for a collection is the name of the collection type. In the following example, based on Example 40 from the indexing spec, nested collections are used to describe a complex index.
 
->**Issue 8: Nesting sub-collections in between links.**
-This looks like a bug from the current EPUB spec rather than a feature that should be allowed.
+>**Issue 20: [Nesting sub-collections between links](https://github.com/dauwhe/epub31-bff/issues/20)**
 
 #####Example 5: index group
 
