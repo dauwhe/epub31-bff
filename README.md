@@ -342,14 +342,14 @@ The key for a collection is the name of the collection type. In the following ex
 
 ```json
 
-{ 
+{
   "metadata": {},
 
   "rendition": {},
 
   "index": {
     "links": [{
-        "index-group": {
+      "index-group": [{
 
           "links": [{
             "href": "subjectIndex-a01.html",
@@ -361,21 +361,17 @@ The key for a collection is the name of the collection type. In the following ex
             "href": "subjectIndex-a03.html",
             "type": "text/html"
           }]
+        },
 
-        }
-      },
-
-
-      {
-        "href": "subjectIndex-b.html",
-        "type": "text/html"
-      },
-
-      {
-
-        "index-group": {
+        {
           "links": [{
+            "href": "subjectIndex-a01.html",
+            "type": "text/html"
+          }]
+        },
 
+        {
+          "links": [{
             "href": "subjectIndex-c01.html",
             "type": "text/html"
           }, {
@@ -385,20 +381,24 @@ The key for a collection is the name of the collection type. In the following ex
             "href": "subjectIndex-c03.html",
             "type": "text/html"
           }]
+        },
 
+        {
+          "links": [{
+            "href": "subjectIndex-d.html",
+            "type": "text/html"
+          }]
+        },
+
+        {
+          "links": [{
+            "href": "subjectIndex-e.html",
+            "type": "text/html"
+          }]
         }
-      },
-
-      {
-        "href": "subjectIndex-d.html",
-        "type": "text/html"
-      }, {
-        "href": "subjectIndex-e.html",
-        "type": "text/html"
-      }
-    ]
+      ]
+    }]
   }
-
 }
 
 ```
