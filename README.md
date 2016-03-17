@@ -348,9 +348,8 @@ The key for a collection is the name of the collection type. In the following ex
   "rendition": {},
 
   "index": {
-    "links": [{
+  
       "index-group": [{
-
           "links": [{
             "href": "subjectIndex-a01.html",
             "type": "text/html"
@@ -397,7 +396,6 @@ The key for a collection is the name of the collection type. In the following ex
           }]
         }
       ]
-    }]
   }
 }
 
