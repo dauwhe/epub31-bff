@@ -148,7 +148,7 @@ It requires at least the presence of `href` and `type`:
 | href  | link location  | URI  | Yes  |
 | type  | MIME type of resource  | MIME media type  | Yes  |
 | title  | title of the linked resource  | text  | No  |
-| rel  | relationship  | see [list of property values](http://www.idpf.org/epub/vocab/package/link/)  | No  |
+| rel  | relationship  | see [list of rel values](http://www.idpf.org/epub/vocab/package/link/)  | No  |
 | properties  | properties associated with the linked resource  | see [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
 | media-overlay  | indicates SMIL file corresponding to the linked resource  | URI  | No  |
 | duration  | indicates length the linked resource  | subset of SMIL clock value  | No  |
@@ -281,7 +281,7 @@ Each of them must have rendition metadata to allow the reading system to select 
     }
   ],
 
-  "resouces": [
+  "resources": [
     {
       "href": "css/epub.css",
       "type": "text/css"
