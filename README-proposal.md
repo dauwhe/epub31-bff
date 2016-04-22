@@ -42,42 +42,18 @@ We can describe everything we need to know about the bundle of documents that fo
   ],
   
   "spine": [
-    {
-      "href": "cover.jpg",
-      "type": "image/jpeg",
-      "properties": "cover-image",
-      "title": "Cover"
-    }, {
-      "href": "map.svg",
-      "type": "image/svg+xml",
-      "title": "Map"
-    }, {
-      "href": "c001.html",
-      "type": "text/html",
-      "title": "Chapter 1"
-    }, {
-      "href": "c002.html",
-      "type": "text/html",
-      "title": "Chapter 2"
-    }
+    {"href": "cover.jpg", "type": "image/jpeg", "properties": "cover-image", "title": "Cover"}, 
+    {"href": "map.svg", "type": "image/svg+xml", "title": "Map"}, 
+    {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
+    {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
   ],
 
   "resources": [
-    {
-      "href": "style.css",
-      "type": "text/css"
-    }, {
-      "href": "whale.jpg",
-      "type": "image/jpeg"
-    }, {
-      "href": "boat.svg",
-      "type": "image/svg+xml"
-    }, {
-      "href": "notes.html",
-      "type": "text/html"
-    }
+    {"href": "style.css", "type": "text/css"}, 
+    {"href": "whale.jpg", "type": "image/jpeg"}, 
+    {"href": "boat.svg", "type": "image/svg+xml"}, 
+    {"href": "notes.html", "type": "text/html"}
   ]
-  
 }
 ```
 
@@ -187,22 +163,12 @@ Each of them must have rendition metadata to allow the reading system to select 
     },
 
     "spine": [
-      {
-        "href": "reflow/html/section001.xhtml",
-        "type": "application/xhtml+xml"
-      }, {
-        "href": "reflow/html/section002.xhtml",
-        "type": "application/xhtml+xml"
-      }, {
-        "href": "reflow/html/section003.xhtml",
-        "type": "application/xhtml+xml"
-      }
+      {"href": "reflow/html/section001.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "reflow/html/section002.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "reflow/html/section003.xhtml", "type": "application/xhtml+xml"}
     ],
 
-    "resources": [{
-      "href": "reflow/css/reflow.css",
-      "type": "text/css"
-    }]
+    "resources": [{"href": "reflow/css/reflow.css","type": "text/css"}]
   },
   {
     "metadata": {
@@ -213,28 +179,14 @@ Each of them must have rendition metadata to allow the reading system to select 
     },
 
     "spine": [
-      {
-        "href": "fixed/html/page001.xhtml",
-        "type": "application/xhtml+xml"
-      }, {
-        "href": "fixed/html/page002.xhtml",
-        "type": "application/xhtml+xml"
-      }, {
-        "href": "fixed/html/page003.xhtml",
-        "type": "application/xhtml+xml"
-      }, {
-        "href": "fixed/html/page004.xhtml",
-        "type": "application/xhtml+xml"
-      }, {
-        "href": "fixed/html/page005.xhtml",
-        "type": "application/xhtml+xml"
-      }
+      {"href": "fixed/html/page001.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "fixed/html/page002.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "fixed/html/page003.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "fixed/html/page004.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "fixed/html/page005.xhtml","type": "application/xhtml+xml"}
     ],
 
-    "resources": [{
-     "href": "fixed/css/fixed.css",
-     "type": "text/css"
-    }]
+    "resources": [{"href": "fixed/css/fixed.css","type": "text/css"}]
   }
  ]
 
@@ -282,31 +234,13 @@ Each of them must have rendition metadata to allow the reading system to select 
   ],
 
   "resources": [
-    {
-      "href": "css/epub.css",
-      "type": "text/css"
-    }, {
-      "href": "chapter1_audio.smil",
-      "type": "application/smil+xml"
-    }, {
-      "href": "chapter2_audio.smil",
-      "type": "application/smil+xml"
-    }, {
-      "href": "chapter3_audio.smil",
-      "type": "application/smil+xml"
-    }, {
-      "href": "chapter1_audio.mp3",
-      "type": "audio/mpeg",
-      "duration": "0:32:29"
-    }, {
-      "href": "chapter2_audio.mp3",
-      "type": "audio/mpeg",
-      "duration": "0:34:02"
-    }, {
-      "href": "chapter3_audio.mp3",
-      "type": "audio/mpeg",
-      "duration": "0:29:49"
-    }
+    {"href": "css/epub.css","type": "text/css"}, 
+    {"href": "chapter1_audio.smil", "type": "application/smil+xml"}, 
+    {"href": "chapter2_audio.smil", "type": "application/smil+xml"}, 
+    {"href": "chapter3_audio.smil", "type": "application/smil+xml"}, 
+    {"href": "chapter1_audio.mp3", "type": "audio/mpeg", "duration": "0:32:29"},
+    {"href": "chapter2_audio.mp3", "type": "audio/mpeg", "duration": "0:34:02"}, 
+    {"href": "chapter3_audio.mp3", "type": "audio/mpeg", "duration": "0:29:49"}
   ]
 }
 ```
@@ -345,40 +279,17 @@ We can add a context so that the JSON can be interpreted as linked data.
   ],
   
   "spine": [
-    {
-      "href": "cover.jpg",
-      "type": "image/jpeg",
-      "properties": "cover-image",
-      "title": "Cover"
-    }, {
-      "href": "map.svg",
-      "type": "image/svg+xml",
-      "title": "Map"
-    }, {
-      "href": "c001.html",
-      "type": "text/html",
-      "title": "Chapter 1"
-    }, {
-      "href": "c002.html",
-      "type": "text/html",
-      "title": "Chapter 2"
-    }
+    {"href": "cover.jpg", "type": "image/jpeg", "properties": "cover-image", "title": "Cover"}, 
+    {"href": "map.svg", "type": "image/svg+xml", "title": "Map"}, 
+    {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
+    {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
   ],
 
   "resources": [
-    {
-      "href": "style.css",
-      "type": "text/css"
-    }, {
-      "href": "whale.jpg",
-      "type": "image/jpeg"
-    }, {
-      "href": "boat.svg",
-      "type": "image/svg+xml"
-    }, {
-      "href": "notes.html",
-      "type": "text/html"
-    }
+    {"href": "style.css", "type": "text/css"}, 
+    {"href": "whale.jpg", "type": "image/jpeg"}, 
+    {"href": "boat.svg", "type": "image/svg+xml"}, 
+    {"href": "notes.html", "type": "text/html"}
   ]
 }
 ```
