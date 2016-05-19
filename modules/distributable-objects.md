@@ -1,6 +1,6 @@
-#Distributable objects
+# Distributable Objects
 
-##Example : distributable object collection
+## Example
 
 ```json 
 {
@@ -10,7 +10,7 @@
     "type": "distributable-object",
     "identifier": "urn:uuid:a46825d1-e796-4cc3-a633-5160f529a1e0",
     "modified": "2014-11-10T19:30:22Z",
-    "creator": "Jane Doe",
+    "author": "Jane Doe",
     "description": "Introduction to the history of phantasms. For sale separately.",
     "source": "urn:isbn:9780987654321",
     "date": "2014-10-31",
@@ -19,24 +19,15 @@
 
   "distributable-object": {
 
-    "links": [{
-      "href": "xhtml/chapter01.xhtml",
-      "type": "application/xhtml+xml"
-    }, {
-      "href": "xhtml/notes.xhtml",
-      "type": "application/xhtml+xml"
-    }, {
-      "href": "xhtml/biblio.xhtml#b001",
-      "type": "application/xhtml+xml"
-    }, {
-      "href": "xhtml/biblio.xhtml#b023",
-      "type": "application/xhtml+xml"
-    }, {
-      "href": "xhtml/biblio.xhtml#b029",
-      "type": "application/xhtml+xml"
-    }],
+    "spine": [
+      {"href": "xhtml/chapter01.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "xhtml/notes.xhtml", "type": "application/xhtml+xml"}, 
+      {"href": "xhtml/biblio.xhtml#b001", "type": "application/xhtml+xml"}, 
+      {"href": "xhtml/biblio.xhtml#b023", "type": "application/xhtml+xml"}, 
+      {"href": "xhtml/biblio.xhtml#b029", "type": "application/xhtml+xml"}
+    ],
     
-    "manifest": [{"href": "css/epub.css", "type": "text/css"}]
+    "resources": [{"href": "css/epub.css", "type": "text/css"}]
   }
 }
 ```
