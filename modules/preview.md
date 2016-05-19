@@ -7,13 +7,13 @@
   "metadata": {},
 
   "spine": {},
-  "manifest": {},
+  "resources": {},
   
   "preview": {
 
     "metadata": {
       "title": "Moby Dick Preview",
-      "language": "en-US",
+      "language": "en",
       "identifier": "123456789012X",
       "modified": "2015-09-29T17:00:00Z"
     },
@@ -25,7 +25,7 @@
       {"href": "toc.html", "type": "text/html", "properties": "nav"}
     ],
 
-    "manifest": [{"href": "style.css", "type": "text/css"}]
+    "resources": [{"href": "style.css", "type": "text/css"}]
   }
 }
 ```
