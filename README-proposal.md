@@ -57,11 +57,11 @@ We can describe everything we need to know about the bundle of documents that fo
 }
 ```
 
-##Content Documents
+## Content Documents
 
 EPUB-BFF content documents follow the usual rules of EPUB 3.1, but also allows HTML in addition to XHTML.
 
-####Associating a JSON manifest document with an EPUB-BFF content document
+### Discovering a Manifest
 
 To indicate that an EPUB-BFF content document is associated with a particular JSON manifest document, 
 use a `link` element in the HTML `head`:
@@ -77,46 +77,47 @@ Link: <http://example.org/manifest.json>; rel="manifest";
          type="application/epub+json"
 ```
 
-##Containers
+## Containers
 
 Ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31]. 
-EPUB-BFF is not defined in a packaged state (although this may change in the future), but exists only as a file system container.  
+EPUB BFF is not defined in a packaged state (although this may change in the future), but exists only as a file system container.
+
 The EPUB-BFF JSON manifest file may be included in an ordinary packaged EPUB if referenced properly, 
 but reading systems have no obligation to read the JSON manifest file in this context.
 
 The JSON manifest document described below must be named `manifest.json` and must appear at the top level of the file system container.
 
->**Issue 15: [Naming and location of JSON package document] (https://github.com/dauwhe/epub31-bff/issues/15)**
+## Table of Contents
+
+An EPUB BFF manifest can indicate that a table of contents is available using the `navigation` rel value in a Link Object:
+
+```json
+{"rel": "navigation", "href": "contents.html", "type": "text/html"}
+```
+
+The link must point to an HTML or XHTML document and may be a Navigation Document as defined in EPUB 3.1. 
+
+An EPUB BFF client may also rely on the `title` key included in each Link Object for the `spine` to extract a minimal table of contents.
 
 
-##Relationship to the Navigation Document
+## The JSON Manifest Document
 
->**Issue 16: [Title attribute on the links object](https://github.com/dauwhe/epub31-bff/issues/16)**
-
-
->**Issue 17: [Can a JSON package file function as a navigation document?](https://github.com/dauwhe/epub31-bff/issues/17)**
-
-
-##The JSON Manifest Document
-
-
-###Data Model
+### Data Model
 
 The manifest itself is a collection.
 EPUB 3.0.1 defines a collection as "a related group of resources."
 
 A collection consists of `metadata`, `links`, and subcollections. The key for a collection is the name of that collection.
 
-A manifest must have one `spine` collection (if there is more than one rendition, a `rendition` collection is used instead) where
-the components of the publications are listed in the linear reading order (aka "spine"). 
+A manifest must have one `spine` collection where the components of the publications are listed in the linear reading order (aka "spine"). 
 Other resources are listed in a `resources` collection. 
 
 Collections that do not contain any metadata or subcollections (also called "compact collections"), 
-can use a more compact syntax where they simply contain an array of link object. 
+can use a more compact syntax where they simply contain an array of Link Objects. 
 
-###The link object
+###The Link Object
 
-The link object is used in `links` and in compact collections to list resources associated to a collection. 
+The Link Object is used in `links` and in compact collections to list resources associated to a collection. 
 It requires at least the presence of `href` and `type`:
 
 | Name  | Value | Format | Required? |
@@ -127,90 +128,25 @@ It requires at least the presence of `href` and `type`:
 | rel  | relationship  | see [list of rel values](http://www.idpf.org/epub/vocab/package/link/)  | No  |
 | properties  | properties associated with the linked resource  | see [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
 | media-overlay  | indicates SMIL file corresponding to the linked resource  | URI  | No  |
-| duration  | indicates length the linked resource  | subset of SMIL clock value  | No  |
+| duration  | indicates the length of the linked resource in seconds  | integer > 0 | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
-
->**Issue 18: [Media overlays and the definition of the link object](https://github.com/dauwhe/epub31-bff/issues/18)** 
-
-###Multiple renditions
-
-Multiple renditions publications rely on the `rendition` role and an additional collection element, 
-where each rendition has its own `spine` and `resources`. 
-Each of them must have rendition metadata to allow the reading system to select the proper rendition.
-
-
->**Issue 19: [Rendition mapping in BFF](https://github.com/dauwhe/epub31-bff/issues/19)**
-
-
-
-####Example 2: Multiple renditions with selection metadata
-```json
-{
-  "metadata": {
-    "title": "Chouinard",
-    "language": "en",
-    "identifier": "42",
-    "modified": "2016-02-01T15:45:00Z",
-    "author": "Yvon Chouinard",
-    "description": "Equipment for alpinists"
-  },
-
-  "rendition": [{
-    "metadata": {
-      "layout": "reflowable",
-      "accessMode": "textual",
-      "label": "Optimized for smaller screens"
-    },
-
-    "spine": [
-      {"href": "reflow/html/section001.xhtml", "type": "application/xhtml+xml"}, 
-      {"href": "reflow/html/section002.xhtml", "type": "application/xhtml+xml"}, 
-      {"href": "reflow/html/section003.xhtml", "type": "application/xhtml+xml"}
-    ],
-
-    "resources": [{"href": "reflow/css/reflow.css","type": "text/css"}]
-  },
-  {
-    "metadata": {
-      "media": "color, min-width: 1920px",
-      "layout": "pre-paginated",
-      "accessMode": "visual",
-      "label": "Color-optimized print replica"
-    },
-
-    "spine": [
-      {"href": "fixed/html/page001.xhtml", "type": "application/xhtml+xml"}, 
-      {"href": "fixed/html/page002.xhtml", "type": "application/xhtml+xml"}, 
-      {"href": "fixed/html/page003.xhtml", "type": "application/xhtml+xml"}, 
-      {"href": "fixed/html/page004.xhtml", "type": "application/xhtml+xml"}, 
-      {"href": "fixed/html/page005.xhtml","type": "application/xhtml+xml"}
-    ],
-
-    "resources": [{"href": "fixed/css/fixed.css","type": "text/css"}]
-  }
- ]
-
-}
-
-```
 
 
 ## JSON-LD and Linked Data
 
 We can add a context so that the JSON can be interpreted as linked data. 
 
-##### Example 3.
+##### Example 2.
 
 >**Note**: Metadata and JSON-LD for this proposal are still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. All extensions would have to use full IRIs since additional context definition won't be allowed. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
-######JSON
+###### JSON
 ```json
 {
   "@context": "http://idpf.org/epub.jsonld",
-  "@type": "http://schema.org/CreativeWork",
   
   "metadata": {
-    "@type": "http://schema.org/Book",
+    "@type": "http://schema.org/EBook",
     "identifier": "urn:isbn:9780000000001",
     "title": "Moby-Dick",
     "author": "Herman Melville",
@@ -245,10 +181,9 @@ If we use another example with more complex metadata expression and an extension
 ```json
 {
   "@context": "http://idpf.org/epub.jsonld",
-  "@type": "http://schema.org/CreativeWork",
   
   "metadata": {
-    "@type": "http://schema.org/Book",
+    "@type": "http://schema.org/EBook",
     "identifier": "urn:isbn:9780000000002",
     "title": {
       "en": "A Journey into the Center of the Earth",
@@ -277,7 +212,7 @@ If we use another example with more complex metadata expression and an extension
 }
 ```
 
-######Schema.org context (a context for Dublin Core is also available at the above gist)
+###### Schema.org context (a context for Dublin Core is also available at the above gist)
 ```json
 {
   "@context": {
