@@ -194,66 +194,12 @@ Each of them must have rendition metadata to allow the reading system to select 
 
 ```
 
-###Media overlays
-
-#####Example 3: media overlays
-```json
-{
-  "metadata": {
-    "title": "Audio Book",
-    "language": "en",
-    "identifier": "qqq",
-    "modified": "2016-01-01T00:00:01Z",
-    "creator": "Jane Doe",
-    "duration": "1:36:20",
-    "narrator": "Joe Speaker",
-    "active-class": "-epub-media-overlay-active",
-    "playback-active-class": "-epub-media-overlay-playing"
-  },
-  
-  "spine": [
-    {
-      "href": "xhtml/chapter01.xhtml",
-      "type": "application/xhtml+xml",
-      "media-overlay": "chapter1_audio.smil"
-    },
-    {
-      "href": "xhtml/chapter02.xhtml",
-      "type": "application/xhtml+xml",
-      "media-overlay": "chapter2_audio.smil"
-    },
-    {
-      "href": "xhtml/chapter03.xhtml",
-      "type": "application/xhtml+xml",
-      "links": {
-        "type:": "application/smil+xml",
-        "href": "chapter3_audio.smil",
-        "rel": "media-overlay"
-      }
-    }
-  ],
-
-  "resources": [
-    {"href": "css/epub.css","type": "text/css"}, 
-    {"href": "chapter1_audio.smil", "type": "application/smil+xml"}, 
-    {"href": "chapter2_audio.smil", "type": "application/smil+xml"}, 
-    {"href": "chapter3_audio.smil", "type": "application/smil+xml"}, 
-    {"href": "chapter1_audio.mp3", "type": "audio/mpeg", "duration": "0:32:29"},
-    {"href": "chapter2_audio.mp3", "type": "audio/mpeg", "duration": "0:34:02"}, 
-    {"href": "chapter3_audio.mp3", "type": "audio/mpeg", "duration": "0:29:49"}
-  ]
-}
-```
-
->**Issue: How do we support media-overlays?**
-In the previous example, media overlays are assigned to XHTML resources using either a dedicated attribute or a nested link element? What's the best solution for that problem? Fallbacks could also work with a nested link.
-
 
 ## JSON-LD and Linked Data
 
 We can add a context so that the JSON can be interpreted as linked data. 
 
-##### Example 4.
+##### Example 3.
 
 >**Note**: Metadata and JSON-LD for this proposal are still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. All extensions would have to use full IRIs since additional context definition won't be allowed. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
