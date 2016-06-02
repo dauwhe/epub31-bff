@@ -2,7 +2,10 @@
 
 EPUB as it exists today is not directly usable by a web browser. The web-friendly content files are inside a zip package, which also contains container and package files expressed in a custom XML vocabulary. 
 
-The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier for web developers to display EPUB content by [1] allowing an unzipped ("exploded") publication, and [2] by providing an alternative JSON serialization of the information in container.xml and the package document(s).
+The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier for web developers to display EPUB content by: 
+
+- allowing an unzipped ("exploded") publication 
+- and providing an alternative JSON serialization of the information in container.xml and the package document(s).
 
 ##Introduction: The Browser-Friendly Format (aka "BFF")
 
@@ -79,13 +82,20 @@ Link: <http://example.org/manifest.json>; rel="manifest";
 
 ## Containers
 
-Ordinary EPUBs must be packaged in an EPUB Container as defined in [OCF31]. 
-EPUB BFF is not defined in a packaged state (although this may change in the future), but exists only as a file system container.
+Classic EPUBs must be packaged in an EPUB Container as defined in the OCF specification.
 
-The EPUB-BFF JSON manifest file may be included in an ordinary packaged EPUB if referenced properly, 
-but reading systems have no obligation to read the JSON manifest file in this context.
+EPUB BFF is primarily meant to be distributed unpackaged and exploded on the Web.
 
-The JSON manifest document described below must be named `manifest.json` and must appear at the top level of the file system container.
+That said, an EPUB BFF manifest may be included in a classic EPUB but reading systems have no obligation to access the manifest.
+
+If an EPUB BFF manifest is included in an EPUB container, the following restrictions apply:
+
+- the manifest document must be named `manifest.json` and must appear at the top level of the container
+- the OPF of the primary rendition must include a link to the manifest where the relationship is set to `alternate`
+
+```xml
+<link rel="alternate" href="manifest.json" media-type="application/epub+json" />
+```
 
 ## Table of Contents
 
@@ -125,22 +135,24 @@ It requires at least the presence of `href` and `type`:
 | href  | link location  | URI  | Yes  |
 | type  | MIME type of resource  | MIME media type  | Yes  |
 | title  | title of the linked resource  | text  | No  |
-| rel  | relationship  | see [list of rel values](http://www.idpf.org/epub/vocab/package/link/)  | No  |
-| properties  | properties associated with the linked resource  | see [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
+| rel  | relationship  | [list of rel values](http://www.idpf.org/epub/vocab/package/link/) or URI for an extension  | No  |
+| properties  | properties associated with the linked resource  | [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
 | media-overlay  | indicates SMIL file corresponding to the linked resource  | URI  | No  |
-| duration  | indicates the length of the linked resource in seconds  | integer > 0 | No  |
+| duration  | indicates the length of the linked resource in seconds  | integer where the value is greater than zero | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
 
 
 ## JSON-LD and Linked Data
 
-We can add a context so that the JSON can be interpreted as linked data. 
+JSON-LD provides an easy and standard way to extend existing JSON document: through the addition of a context, we can associate various keys in our document to Linked Data elements from various vocabularies.
 
-##### Example 2.
+EPUB BFF defines a shared external context document located at `http://idpf.org/epub.jsonld` based primarily on schema.org and its extensions.
+
+### Example 2.
 
 >**Note**: Metadata and JSON-LD for this proposal are still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. All extensions would have to use full IRIs since additional context definition won't be allowed. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
-###### JSON
+#### JSON
 ```json
 {
   "@context": "http://idpf.org/epub.jsonld",
@@ -212,7 +224,7 @@ If we use another example with more complex metadata expression and an extension
 }
 ```
 
-###### Schema.org context (a context for Dublin Core is also available at the above gist)
+#### Unique Context Document
 ```json
 {
   "@context": {
@@ -266,6 +278,6 @@ If we use another example with more complex metadata expression and an extension
 
 ```
 
-###Acknowledgements
+##Acknowledgements
 
 All the JSON serialization work is based on ideas from Hadrien Gardeur.  
