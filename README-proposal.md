@@ -137,7 +137,6 @@ It requires at least the presence of `href` and `type`:
 | title  | title of the linked resource  | text  | No  |
 | rel  | relationship  | [list of rel values](http://www.idpf.org/epub/vocab/package/link/) or URI for an extension  | No  |
 | properties  | properties associated with the linked resource  | [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
-| media-overlay  | indicates SMIL file corresponding to the linked resource  | URI  | No  |
 | duration  | indicates the length of the linked resource in seconds  | integer where the value is greater than zero | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
 
