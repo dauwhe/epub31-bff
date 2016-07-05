@@ -34,28 +34,30 @@ We can describe everything we need to know about the bundle of documents that fo
 {
   "metadata": {
     "title": "Moby-Dick",
-    "identifier": "978031600000X",
+    "author": "Herman Melville",
+    "identifier": "urn:isbn:978031600000X",
     "language": "en",
     "modified": "2015-09-29T17:00:00Z"
   },
 
   "links": [
     {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/epub+json"},
-    {"rel": "alternate", "href": "http://example.org/publication.epub", "type": "application/epub+zip"}
+    {"rel": "alternate", "href": "http://example.org/publication.epub", "type": "application/epub+zip"},
+    {"rel": "search", "href": "http://example.org/?q={searchTerms}", "type": "text/html", "templated": true}
   ],
   
   "spine": [
-    {"href": "cover.jpg", "type": "image/jpeg", "properties": "cover-image", "title": "Cover"}, 
-    {"href": "map.svg", "type": "image/svg+xml", "title": "Map"}, 
-    {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
-    {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
+    {"href": "http://example.org/cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "properties": "cover-image", "title": "Cover"}, 
+    {"href": "http://example.org/map.svg", "type": "image/svg+xml", "title": "Map"}, 
+    {"href": "http://example.org/c001.html", "type": "text/html", "title": "Chapter 1"}, 
+    {"href": "http://example.org/c002.html", "type": "text/html", "title": "Chapter 2"}
   ],
 
   "resources": [
-    {"href": "style.css", "type": "text/css"}, 
-    {"href": "whale.jpg", "type": "image/jpeg"}, 
-    {"href": "boat.svg", "type": "image/svg+xml"}, 
-    {"href": "notes.html", "type": "text/html"}
+    {"href": "http://example.org/style.css", "type": "text/css"}, 
+    {"href": "http://example.org/whale.jpg", "type": "image/jpeg"}, 
+    {"href": "http://example.org/boat.svg", "type": "image/svg+xml"}, 
+    {"href": "http://example.org/notes.html", "type": "text/html"}
   ]
 }
 ```
@@ -137,6 +139,8 @@ It requires at least the presence of `href` and `type`:
 | title  | title of the linked resource  | text  | No  |
 | rel  | relationship  | [list of rel values](http://www.idpf.org/epub/vocab/package/link/) or URI for an extension  | No  |
 | properties  | properties associated with the linked resource  | [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
+| height  | indicates the height of the linked resource in pixels  | integer where the value is greater than zero | No  |
+| width  | indicates the width of the linked resource in pixels  | integer where the value is greater than zero | No  |
 | duration  | indicates the length of the linked resource in seconds  | integer where the value is greater than zero | No  |
 | templated  | indicates linked resource is a URI template  | boolean  | No  |
 
