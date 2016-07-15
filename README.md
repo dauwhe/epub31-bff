@@ -168,7 +168,7 @@ It requires at least the presence of `href` and `type`:
 
 JSON-LD provides an easy and standard way to extend existing JSON document: through the addition of a context, we can associate keys in a document to Linked Data elements from various vocabularies.
 
-EPUB BFF relies on JSON-LD to provide a context for the 'metadata' object of the manifest.
+EPUB BFF relies on JSON-LD to provide a context for the `metadata` object of the manifest.
 
 While JSON-LD is very flexible and allows the context to be defined in-line (local context) or referenced (URI), EPUB BFF restricts context definition strictly to references.
 
