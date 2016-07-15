@@ -10,15 +10,18 @@ should behave more like CSS which means:
 ```json
 {
   "metadata": {
+    "@type": "http://bib.schema.org/Audiobook",
     "title": "Audio Book",
     "language": "en",
     "identifier": "qqq",
     "modified": "2016-01-01T00:00:01Z",
-    "creator": "Jane Doe",
-    "duration": "1:36:20",
-    "narrator": "Joe Speaker",
-    "active-class": "-epub-media-overlay-active",
-    "playback-active-class": "-epub-media-overlay-playing"
+    "author": "Jane Doe",
+    "duration": "01:36:20",
+    "bib:readBy": "Joe Speaker",
+    "media-overlay": {
+      "active-class": "-epub-media-overlay-active",
+      "playback-active-class": "-epub-media-overlay-playing"
+    }
   },
   
   "spine": [
@@ -32,9 +35,9 @@ should behave more like CSS which means:
     {"href": "chapter1_audio.smil", "type": "application/smil+xml"}, 
     {"href": "chapter2_audio.smil", "type": "application/smil+xml"}, 
     {"href": "chapter3_audio.smil", "type": "application/smil+xml"}, 
-    {"href": "chapter1_audio.mp3", "type": "audio/mpeg", "duration": "0:32:29"},
-    {"href": "chapter2_audio.mp3", "type": "audio/mpeg", "duration": "0:34:02"}, 
-    {"href": "chapter3_audio.mp3", "type": "audio/mpeg", "duration": "0:29:49"}
+    {"href": "chapter1_audio.mp3", "type": "audio/mpeg", "duration": "1949"},
+    {"href": "chapter2_audio.mp3", "type": "audio/mpeg", "duration": "2042"}, 
+    {"href": "chapter3_audio.mp3", "type": "audio/mpeg", "duration": "1789"}
   ]
 }
 ```
