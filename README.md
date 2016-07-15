@@ -28,7 +28,7 @@ We can describe everything we need to know about the bundle of documents that fo
 4. Additional resources that are not part of the spine but used by the publication (CSS, images, fonts).
 
 
-#####Example 1 (omitting linked data and other enhancements)
+#####Example (omitting linked data and other enhancements)
 
 ```json
 {
@@ -61,56 +61,6 @@ We can describe everything we need to know about the bundle of documents that fo
   ]
 }
 ```
-
-## Content Documents
-
-EPUB-BFF content documents follow the usual rules of EPUB 3.1, but also allows HTML in addition to XHTML.
-
-### Discovering a Manifest
-
-To indicate that an EPUB-BFF content document is associated with a particular JSON manifest document, 
-use a `link` element in the HTML `head`:
-
-```html
-<link href="manifest.json" rel="manifest" type="application/epub+json">
-```
-
-The manifest can also be associated with any resources served over HTTP using the `Link` header:
-
-```
-Link: <http://example.org/manifest.json>; rel="manifest";
-         type="application/epub+json"
-```
-
-## Containers
-
-Classic EPUBs must be packaged in an EPUB Container as defined in the OCF specification.
-
-EPUB BFF is primarily meant to be distributed unpackaged and exploded on the Web.
-
-That said, an EPUB BFF manifest may be included in a classic EPUB but reading systems have no obligation to access the manifest.
-
-If an EPUB BFF manifest is included in an EPUB container, the following restrictions apply:
-
-- the manifest document must be named `manifest.json` and must appear at the top level of the container
-- the OPF of the primary rendition must include a link to the manifest where the relationship is set to `alternate`
-
-```xml
-<link rel="alternate" href="manifest.json" media-type="application/epub+json" />
-```
-
-## Table of Contents
-
-An EPUB BFF manifest can indicate that a table of contents is available using the `navigation` rel value in a Link Object:
-
-```json
-{"rel": "navigation", "href": "contents.html", "type": "text/html"}
-```
-
-The link must point to an HTML or XHTML document and may be a Navigation Document as defined in EPUB 3.1. 
-
-An EPUB BFF client may also rely on the `title` key included in each Link Object for the `spine` to extract a minimal table of contents.
-
 
 ## The JSON Manifest Document
 
@@ -178,6 +128,54 @@ EPUB BFF defines a registry of well-known context documents, which currently inc
 | ---- | ----------- | ------------- | --------- |
 | http://idpf.org/epub.jsonld  | Main context definition used by every EPUB BFF manifest.  | https://github.com/dauwhe/epub31-bff/blob/master/Context.md  | Yes  |
 
+## Content Documents
+
+EPUB-BFF content documents follow the usual rules of EPUB 3.1, but also allows HTML in addition to XHTML.
+
+### Discovering a Manifest
+
+To indicate that an EPUB-BFF content document is associated with a particular JSON manifest document, 
+use a `link` element in the HTML `head`:
+
+```html
+<link href="manifest.json" rel="manifest" type="application/epub+json">
+```
+
+The manifest can also be associated with any resources served over HTTP using the `Link` header:
+
+```
+Link: <http://example.org/manifest.json>; rel="manifest";
+         type="application/epub+json"
+```
+
+## Table of Contents
+
+An EPUB BFF manifest can indicate that a table of contents is available using the `navigation` rel value in a Link Object:
+
+```json
+{"rel": "navigation", "href": "contents.html", "type": "text/html"}
+```
+
+The link must point to an HTML or XHTML document and may be a Navigation Document as defined in EPUB 3.1. 
+
+An EPUB BFF client may also rely on the `title` key included in each Link Object for the `spine` to extract a minimal table of contents.
+
+## Containers
+
+Classic EPUBs must be packaged in an EPUB Container as defined in the OCF specification.
+
+EPUB BFF is primarily meant to be distributed unpackaged and exploded on the Web.
+
+That said, an EPUB BFF manifest may be included in a classic EPUB but reading systems have no obligation to access the manifest.
+
+If an EPUB BFF manifest is included in an EPUB container, the following restrictions apply:
+
+- the manifest document must be named `manifest.json` and must appear at the top level of the container
+- the OPF of the primary rendition must include a link to the manifest where the relationship is set to `alternate`
+
+```xml
+<link rel="alternate" href="manifest.json" media-type="application/epub+json" />
+```
 
 ##Acknowledgements
 
