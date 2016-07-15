@@ -119,13 +119,32 @@ An EPUB BFF client may also rely on the `title` key included in each Link Object
 The manifest itself is a collection.
 EPUB 3.0.1 defines a collection as "a related group of resources."
 
-A collection consists of `metadata`, `links`, and subcollections. The key for a collection is the name of that collection.
+A collection consists of `metadata`, `links`, and subcollections. The key for a collection is the role of that collection:
+```
+role
+  metadata
+  links
+  [subcollections]
+```
 
-A manifest must have one `spine` collection where the components of the publications are listed in the linear reading order (aka "spine"). 
+A manifest must have one `spine` collection where the components of the publications are listed in the linear reading order. 
 Other resources are listed in a `resources` collection. 
 
 Collections that do not contain any metadata or subcollections (also called "compact collections"), 
 can use a more compact syntax where they simply contain an array of Link Objects. 
+
+###Collection Roles
+
+This specification defines two collection roles that are the building blocks of any manifest:
+
+| Role  | Semantics | Compact? | Required? |
+| ----- | --------- | -------- | --------- |
+| spine  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
+| resources  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  |
+
+Additional collection roles are defined in the [EPUB Collection Roles Registry](http://idpf.github.io/epub-registries/roles/).
+
+Extensions to these collection roles must use a URI as their JSON key.
 
 ###The Link Object
 
