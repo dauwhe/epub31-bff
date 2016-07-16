@@ -96,6 +96,20 @@ Additional collection roles are defined in the [EPUB Collection Roles Registry](
 
 Extensions to these collection roles must use a URI as their JSON key.
 
+###Links
+
+A manifest must contain at least one link using the `self` relationship.
+This link must point to the canonical location of the manifest using an absolute URI:
+
+```json
+"links": [{
+  "rel": "self",
+  "href": "http://example.org/manifest.json",
+  "type": "application/epub+json"}
+]
+```
+A manifest may also contain other links, such as a `alternate` link to an EPUB 3.1 version of the publication for example.
+
 ###The Link Object
 
 The Link Object is used in `links` and in compact collections to list resources associated to a collection. 
@@ -126,7 +140,7 @@ EPUB BFF defines a registry of well-known context documents, which currently inc
 
 | URI  | Description | Documentation | Required? |
 | ---- | ----------- | ------------- | --------- |
-| http://idpf.org/epub.jsonld  | Main context definition used by every EPUB BFF manifest.  | https://github.com/dauwhe/epub31-bff/blob/master/Context.md  | Yes  |
+| http://idpf.org/epub.jsonld  | Main context definition used by every EPUB BFF manifest.  | [View on Github](https://github.com/dauwhe/epub31-bff/blob/master/Context.md) | Yes  |
 
 ## Content Documents
 
@@ -150,7 +164,7 @@ Link: <http://example.org/manifest.json>; rel="manifest";
 
 ## Table of Contents
 
-An EPUB BFF manifest can indicate that a table of contents is available using the `navigation` rel value in a Link Object:
+An EPUB BFF manifest can indicate that a table of contents is available using the `navigation` rel value in a Link Object listed in `spine` or `resources`:
 
 ```json
 {"rel": "navigation", "href": "contents.html", "type": "text/html"}
@@ -158,7 +172,7 @@ An EPUB BFF manifest can indicate that a table of contents is available using th
 
 The link must point to an HTML or XHTML document and may be a Navigation Document as defined in EPUB 3.1. 
 
-An EPUB BFF client may also rely on the `title` key included in each Link Object for the `spine` to extract a minimal table of contents.
+An EPUB BFF client may also rely on the `title` key included in each Link Object of the `spine` to extract a minimal table of contents.
 
 ## Containers
 
