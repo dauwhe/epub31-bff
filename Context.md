@@ -71,7 +71,7 @@ EPUB BFF defines a shared external context document located at `http://idpf.org/
     "position": "http://schema.org/position"
   }
 }
-
+```
 
 ## Example
 
