@@ -1,12 +1,80 @@
 #Context Document for EPUB
 
+>**Note**: This proposal is still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
+
 EPUB BFF defines a shared external context document located at `http://idpf.org/epub.jsonld` based primarily on schema.org and its extensions.
 
-### Example .
+## Metadata Definition
 
->**Note**: Metadata and JSON-LD for this proposal are still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. All extensions would have to use full IRIs since additional context definition won't be allowed. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
+| Key  | Schema.org | EPUB 3.1 |
+| ---- | ---------- | -------- |
+| title  | http://schema.org/name  | dc:title |
+| author  | http://schema.org/author  | dc:creator |
+| translator  | http://schema.org/translator  | dc:contributor@opf:role="trl" |
+| editor  | http://schema.org/editor  | dc:contributor@opf:role="edt" |
+| illustrator  | http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
+| contributor  | http://schema.org/contributor  | dc:contributor |
+| language  | http://schema.org/inLanguage  | dc:language |
+| publisher  | http://schema.org/publisher  | dc:publisher |
+| modified  | http://schema.org/dateModified  | dcterms:modified |
+| description  | http://schema.org/description  | dc:description |
 
-#### JSON
+## Context Document Definition
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "metadata": "owl:sameAs",
+    "identifier": "@id",
+    "title": {
+      "@id": "http://schema.org/name",
+      "@container": "@language"
+    },
+    "sort_as": "http://schema.org/alternateName",
+    "author": {
+      "@id": "http://schema.org/author",
+      "@type": "http://schema.org/Person"
+    },
+    "translator": {
+      "@id": "http://schema.org/translator",
+      "@type": "http://schema.org/Person"
+    },
+    "editor": {
+      "@id": "http://schema.org/editor",
+      "@type": "http://schema.org/Person"
+    },
+    "illustrator": {
+      "@id": "http://schema.org/illustrator",
+      "@type": "http://schema.org/Person"
+    },
+    "contributor": {
+      "@id": "http://schema.org/contributor",
+      "@type": "http://schema.org/Person"
+    },
+    "name":  {
+      "@id": "http://schema.org/name",
+      "@container": "@language"
+    },
+    "language": "http://schema.org/inLanguage",
+    "publisher": {
+      "@id": "http://schema.org/publisher",
+      "@type": "http://schema.org/Organization"
+    },
+    "modified": {
+      "@id": "http://schema.org/dateModified",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "description": "http://schema.org/description",
+    "belongs_to": "http://schema.org/isPartOf",
+    "series": "http://schema.org/Series",
+    "collection": "http://bib.schema.org/Collection",
+    "position": "http://schema.org/position"
+  }
+}
+
+
+## Example
+
 ```json
 {
   "@context": "http://idpf.org/epub.jsonld",
@@ -77,56 +145,3 @@ If we use another example with more complex metadata expression and an extension
   }
 }
 ```
-
-#### Unique Context Document
-```json
-{
-  "@context": {
-    "schema": "http://schema.org/",
-    "metadata": "owl:sameAs",
-    "identifier": "@id",
-    "title": {
-      "@id": "http://schema.org/name",
-      "@container": "@language"
-    },
-    "sort_as": "http://schema.org/alternateName",
-    "author": {
-      "@id": "http://schema.org/author",
-      "@type": "http://schema.org/Person"
-    },
-    "translator": {
-      "@id": "http://schema.org/translator",
-      "@type": "http://schema.org/Person"
-    },
-    "editor": {
-      "@id": "http://schema.org/editor",
-      "@type": "http://schema.org/Person"
-    },
-    "illustrator": {
-      "@id": "http://schema.org/illustrator",
-      "@type": "http://schema.org/Person"
-    },
-    "contributor": {
-      "@id": "http://schema.org/contributor",
-      "@type": "http://schema.org/Person"
-    },
-    "name":  {
-      "@id": "http://schema.org/name",
-      "@container": "@language"
-    },
-    "language": "http://schema.org/inLanguage",
-    "publisher": {
-      "@id": "http://schema.org/publisher",
-      "@type": "http://schema.org/Organization"
-    },
-    "modified": {
-      "@id": "http://schema.org/dateModified",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "description": "http://schema.org/description",
-    "belongs_to": "http://schema.org/isPartOf",
-    "series": "http://schema.org/Series",
-    "collection": "http://bib.schema.org/Collection",
-    "position": "http://schema.org/position"
-  }
-}
