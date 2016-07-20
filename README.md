@@ -47,17 +47,17 @@ We can describe everything we need to know about the bundle of documents that fo
   ],
   
   "spine": [
-    {"href": "http://example.org/cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "properties": "cover-image", "title": "Cover"}, 
-    {"href": "http://example.org/map.svg", "type": "image/svg+xml", "title": "Map"}, 
-    {"href": "http://example.org/c001.html", "type": "text/html", "title": "Chapter 1"}, 
-    {"href": "http://example.org/c002.html", "type": "text/html", "title": "Chapter 2"}
+    {"href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "properties": "cover-image", "title": "Cover"},
+    {"href": "map.svg", "type": "image/svg+xml", "title": "Map"}, 
+    {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
+    {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
   ],
 
   "resources": [
-    {"href": "http://example.org/style.css", "type": "text/css"}, 
-    {"href": "http://example.org/whale.jpg", "type": "image/jpeg"}, 
-    {"href": "http://example.org/boat.svg", "type": "image/svg+xml"}, 
-    {"href": "http://example.org/notes.html", "type": "text/html"}
+    {"href": "style.css", "type": "text/css"}, 
+    {"href": "whale.jpg", "type": "image/jpeg"}, 
+    {"href": "boat.svg", "type": "image/svg+xml"}, 
+    {"href": "notes.html", "type": "text/html"}
   ]
 }
 ```
