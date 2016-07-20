@@ -14,6 +14,7 @@ This context is meant primarily to:
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |
 | title  | http://schema.org/name  | dc:title |
+| sort_as  | http://schema.org/alternateName  | opf:file-as |
 | author  | http://schema.org/author  | dc:creator |
 | translator  | http://schema.org/translator  | dc:contributor@opf:role="trl" |
 | editor  | http://schema.org/editor  | dc:contributor@opf:role="edt" |
@@ -26,6 +27,7 @@ This context is meant primarily to:
 | published  | http://schema.org/datePublished  | dc:date |
 | description  | http://schema.org/description  | dc:description |
 | epub-type  | None  | dc:type |
+| numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
 
 ## Rendition properties
 
