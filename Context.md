@@ -4,7 +4,12 @@
 
 EPUB BFF defines a shared external context document located at `http://idpf.org/epub.jsonld` based primarily on schema.org and its extensions.
 
-## Metadata Definition
+This context is meant primarily to:
+
+- provide compatibility with EPUB 3.1 by providing equivalent metadata elements based on schema.org
+- align EPUB BFF with the Web by adopting schema.org and its extensions
+
+## Core Metadata
 
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |
@@ -15,9 +20,33 @@ EPUB BFF defines a shared external context document located at `http://idpf.org/
 | illustrator  | http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
 | contributor  | http://schema.org/contributor  | dc:contributor |
 | language  | http://schema.org/inLanguage  | dc:language |
+| subject  | http://schema.org/keywords  | dc:subject |
 | publisher  | http://schema.org/publisher  | dc:publisher |
 | modified  | http://schema.org/dateModified  | dcterms:modified |
+| published  | http://schema.org/datePublished  | dc:date |
 | description  | http://schema.org/description  | dc:description |
+| epub-type  | None  | dc:type |
+
+## Rendition properties
+
+All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.1 specification:
+
+| Key  | URI |
+| ---- | --- |
+| flow  | http://www.idpf.org/vocab/rendition/#flow |
+| layout  | http://www.idpf.org/vocab/rendition/#layout |
+| orientation  | http://www.idpf.org/vocab/rendition/#orientation |
+| spread  | http://www.idpf.org/vocab/rendition/#spread |
+
+Here's an example of metadata for a fixed layout document:
+```json
+"rendition": {
+  "flow": "paginated",
+  "layout": "pre-paginated",
+  "orientation": "landscape",
+  "spread": "none"
+}
+```
 
 ## Context Document Definition
 ```json
@@ -68,7 +97,10 @@ EPUB BFF defines a shared external context document located at `http://idpf.org/
     "belongs_to": "http://schema.org/isPartOf",
     "series": "http://schema.org/Series",
     "collection": "http://bib.schema.org/Collection",
-    "position": "http://schema.org/position"
+    "position": "http://schema.org/position",
+    "spine": "http://schema.org/hasPart",
+    "href": "http://schema.org/url",
+    "type": "http://schema.org/fileFormat"
   }
 }
 ```
