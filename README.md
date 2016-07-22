@@ -140,7 +140,7 @@ EPUB BFF defines a registry of well-known context documents, which currently inc
 
 | URI  | Description | Documentation | Required? |
 | ---- | ----------- | ------------- | --------- |
-| http://idpf.org/epub.jsonld  | Main context definition used by every EPUB BFF manifest.  | [View on Github](https://github.com/dauwhe/epub31-bff/blob/master/Context.md) | Yes  |
+| http://idpf.org/epub.jsonld  | Main context definition used by every EPUB BFF manifest.  | [View on Github](https://github.com/dauwhe/epub31-bff/blob/master/contexts/EPUB.md) | Yes  |
 
 ## Content Documents
 
