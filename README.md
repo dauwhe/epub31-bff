@@ -136,11 +136,13 @@ EPUB BFF relies on JSON-LD to provide a context for the `metadata` object of the
 
 While JSON-LD is very flexible and allows the context to be defined in-line (local context) or referenced (URI), EPUB BFF restricts context definition strictly to references.
 
-EPUB BFF defines a registry of well-known context documents, which currently includes the following references:
+EPUB BFF defines an initial registry of well-known context documents, which currently includes the following references:
 
-| URI  | Description | Documentation | Required? |
+| Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-| http://idpf.org/epub.jsonld  | Main context definition used by every EPUB BFF manifest.  | [View on Github](https://github.com/dauwhe/epub31-bff/blob/master/contexts/EPUB.md) | Yes  |
+[Default Context](https://github.com/dauwhe/epub31-bff/blob/master/contexts/default/) | http://idpf.org/epub.jsonld  | Default context definition used in every EPUB BFF manifest. | Yes |
+
+The full up-to-date registry is [available directly on Github](https://github.com/dauwhe/epub31-bff/blob/master/contexts/).
 
 ## Content Documents
 

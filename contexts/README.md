@@ -2,7 +2,7 @@
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-[Default Context](https://github.com/dauwhe/epub31-bff/blob/master/contexts/EPUB.md) | http://idpf.org/epub.jsonld  | Default context definition used in every EPUB BFF manifest. | Yes |
+[Default Context](https://github.com/dauwhe/epub31-bff/blob/master/contexts/default/) | http://idpf.org/epub.jsonld  | Default context definition used in every EPUB BFF manifest. | Yes |
 
 
 ## Registering a Context Document

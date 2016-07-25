@@ -1,13 +1,17 @@
-#Context Document for EPUB
+#Default Context for EPUB BFF
 
 >**Note**: This proposal is still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
-EPUB BFF defines a shared external context document located at `http://idpf.org/epub.jsonld` based primarily on schema.org and its extensions.
+EPUB BFF defines a shared external context document hosted by the IDPF and based primarily on schema.org and its extensions.
 
 This context is meant primarily to:
 
 - provide compatibility with EPUB 3.1 by providing equivalent metadata elements based on schema.org
 - align EPUB BFF with the Web by adopting schema.org and its extensions
+
+| Name  | URI | Description | Required? |
+| ---- | ----------- | ------------- | --------- |
+Default Context | http://idpf.org/epub.jsonld  | Default context definition used in every EPUB BFF manifest. | Yes |
 
 ## Core Metadata
 
@@ -29,7 +33,7 @@ This context is meant primarily to:
 | epub-type  | None  | dc:type |
 | numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
 
-## Rendition properties
+## Rendition Properties
 
 All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.1 specification:
 
@@ -41,69 +45,13 @@ All rendition specific properties must show up in a `rendition` object. This spe
 | spread  | http://www.idpf.org/vocab/rendition/#spread |
 
 Here's an example of metadata for a fixed layout document:
+
 ```json
 "rendition": {
   "flow": "paginated",
   "layout": "pre-paginated",
   "orientation": "landscape",
   "spread": "none"
-}
-```
-
-## Context Document Definition
-```json
-{
-  "@context": {
-    "schema": "http://schema.org/",
-    "metadata": "owl:sameAs",
-    "identifier": "@id",
-    "title": {
-      "@id": "http://schema.org/name",
-      "@container": "@language"
-    },
-    "sort_as": "http://schema.org/alternateName",
-    "author": {
-      "@id": "http://schema.org/author",
-      "@type": "http://schema.org/Person"
-    },
-    "translator": {
-      "@id": "http://schema.org/translator",
-      "@type": "http://schema.org/Person"
-    },
-    "editor": {
-      "@id": "http://schema.org/editor",
-      "@type": "http://schema.org/Person"
-    },
-    "illustrator": {
-      "@id": "http://schema.org/illustrator",
-      "@type": "http://schema.org/Person"
-    },
-    "contributor": {
-      "@id": "http://schema.org/contributor",
-      "@type": "http://schema.org/Person"
-    },
-    "name":  {
-      "@id": "http://schema.org/name",
-      "@container": "@language"
-    },
-    "language": "http://schema.org/inLanguage",
-    "publisher": {
-      "@id": "http://schema.org/publisher",
-      "@type": "http://schema.org/Organization"
-    },
-    "modified": {
-      "@id": "http://schema.org/dateModified",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "description": "http://schema.org/description",
-    "belongs_to": "http://schema.org/isPartOf",
-    "series": "http://schema.org/Series",
-    "collection": "http://bib.schema.org/Collection",
-    "position": "http://schema.org/position",
-    "spine": "http://schema.org/hasPart",
-    "href": "http://schema.org/url",
-    "type": "http://schema.org/fileFormat"
-  }
 }
 ```
 
