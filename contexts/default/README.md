@@ -33,6 +33,7 @@ Default Context | http://idpf.org/epub.jsonld  | Default context definition used
 | epub-type  | None  | dc:type |
 | numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
 
+
 ## Rendition Properties
 
 All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.1 specification:
@@ -54,6 +55,34 @@ Here's an example of metadata for a fixed layout document:
   "spread": "none"
 }
 ```
+
+## Collections & Series Properties
+
+This context also allows metadata to express that a publication belongs to any number of collections or series.
+
+The `belongs_to` object is used for that purpose and has no real equivalent in EPUB 3.1.
+
+The following keys and their mappings to schema.org are used to specify collections/series:
+
+| Key  | Schema.org |
+| ---- | --- |
+| belongs_to  | http://www.schema.org/isPartOf |
+| series  | http://www.schema.org/Series |
+| collection  | http://www.schema.org/Collection |
+| position  | http://www.schema.org/position |
+
+Here's an example of metadata for both collections and series:
+
+```json
+"belongs_to": {
+  "collection": "Young Adult Classics",
+  "series": {
+    "name": "Harry Potter",
+    "position": 4
+  }
+}
+```
+
 
 ## Example
 
