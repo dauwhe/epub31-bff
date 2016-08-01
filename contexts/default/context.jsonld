@@ -54,6 +54,11 @@
     "position": "http://schema.org/position",
     "spine": "http://schema.org/hasPart",
     "href": "http://schema.org/url",
-    "type": "http://schema.org/fileFormat"
+    "type": "http://schema.org/fileFormat",
+    "rendition": "http://www.idpf.org/vocab/rendition/",
+    "flow": "http://www.idpf.org/vocab/rendition/#flow",
+    "layout": "http://www.idpf.org/vocab/rendition/#layout",
+    "orientation": "http://www.idpf.org/vocab/rendition/#orientation",
+    "spread": "http://www.idpf.org/vocab/rendition/#spread"
   }
 }
