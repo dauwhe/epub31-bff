@@ -1,4 +1,4 @@
-# Media overlays
+# Media Overlays
 
 While EPUB 3.1 relies entirely on the OPF for the support of media overlays, EPUB BFF considers that media overlays 
 should behave more like CSS which means:
@@ -10,14 +10,14 @@ should behave more like CSS which means:
 ```json
 {
   "metadata": {
-    "@type": "http://bib.schema.org/Audiobook",
-    "title": "Audio Book",
+    "@type": "http://bib.schema.org/EBook",
+    "title": "EBook with Media Overlay",
     "language": "en",
-    "identifier": "qqq",
+    "identifier": "http://www.example.com/media-overlay",
     "modified": "2016-01-01T00:00:01Z",
     "author": "Jane Doe",
-    "duration": "01:36:20",
-    "bib:readBy": "Joe Speaker",
+    "duration": "1H32M20S",
+    "readBy": "Joe Speaker",
     "media-overlay": {
       "active-class": "-epub-media-overlay-active",
       "playback-active-class": "-epub-media-overlay-playing"
@@ -35,9 +35,9 @@ should behave more like CSS which means:
     {"href": "chapter1_audio.smil", "type": "application/smil+xml"}, 
     {"href": "chapter2_audio.smil", "type": "application/smil+xml"}, 
     {"href": "chapter3_audio.smil", "type": "application/smil+xml"}, 
-    {"href": "chapter1_audio.mp3", "type": "audio/mpeg", "duration": "1949"},
-    {"href": "chapter2_audio.mp3", "type": "audio/mpeg", "duration": "2042"}, 
-    {"href": "chapter3_audio.mp3", "type": "audio/mpeg", "duration": "1789"}
+    {"href": "chapter1_audio.mp3", "type": "audio/mpeg", "duration": "29M"},
+    {"href": "chapter2_audio.mp3", "type": "audio/mpeg", "duration": "34M"}, 
+    {"href": "chapter3_audio.mp3", "type": "audio/mpeg", "duration": "29M20S"}
   ]
 }
 ```

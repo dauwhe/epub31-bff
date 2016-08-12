@@ -1,13 +1,40 @@
-#Browser-friendly format for EPUB 3.1
+#Web Publication Manifest
 
-EPUB as it exists today is not directly usable by a web browser. The web-friendly content files are inside a zip package, which also contains container and package files expressed in a custom XML vocabulary. 
+## Example
 
-The goal of a browser-friendly format (henceforth EPUB-BFF) is to make it easier for web developers to display EPUB content by: 
+```json
+{
+  "metadata": {
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "identifier": "urn:isbn:978031600000X",
+    "language": "en",
+    "modified": "2015-09-29T17:00:00Z"
+  },
 
-- allowing an unzipped ("exploded") publication 
-- and providing an alternative JSON serialization of the information in container.xml and the package document(s).
+  "links": [
+    {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/epub+json"},
+    {"rel": "alternate", "href": "http://example.org/publication.epub", "type": "application/epub+zip"},
+    {"rel": "search", "href": "http://example.org/?q={searchTerms}", "type": "text/html", "templated": true}
+  ],
+  
+  "spine": [
+    {"href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "properties": "cover-image", "title": "Cover"},
+    {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
+    {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
+  ],
 
-##Introduction: The Browser-Friendly Format (aka "BFF")
+  "resources": [
+    {"href": "style.css", "type": "text/css"}, 
+    {"href": "whale.jpg", "type": "image/jpeg"}, 
+    {"href": "boat.svg", "type": "image/svg+xml"}, 
+    {"href": "notes.html", "type": "text/html"}
+  ]
+}
+```
+
+
+##Introduction
 
 EPUB exists because the web doesn't allow us to easily speak about
 collections of documents. Web documents can link to each other, and link
@@ -28,40 +55,6 @@ We can describe everything we need to know about the bundle of documents that fo
 4. Additional resources that are not part of the spine but used by the publication (CSS, images, fonts).
 
 
-#####Example (omitting linked data and other enhancements)
-
-```json
-{
-  "metadata": {
-    "title": "Moby-Dick",
-    "author": "Herman Melville",
-    "identifier": "urn:isbn:978031600000X",
-    "language": "en",
-    "modified": "2015-09-29T17:00:00Z"
-  },
-
-  "links": [
-    {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/epub+json"},
-    {"rel": "alternate", "href": "http://example.org/publication.epub", "type": "application/epub+zip"},
-    {"rel": "search", "href": "http://example.org/?q={searchTerms}", "type": "text/html", "templated": true}
-  ],
-  
-  "spine": [
-    {"href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "properties": "cover-image", "title": "Cover"},
-    {"href": "map.svg", "type": "image/svg+xml", "title": "Map"}, 
-    {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
-    {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
-  ],
-
-  "resources": [
-    {"href": "style.css", "type": "text/css"}, 
-    {"href": "whale.jpg", "type": "image/jpeg"}, 
-    {"href": "boat.svg", "type": "image/svg+xml"}, 
-    {"href": "notes.html", "type": "text/html"}
-  ]
-}
-```
-
 ## The JSON Manifest Document
 
 ### Data Model
@@ -70,6 +63,7 @@ The manifest itself is a collection.
 EPUB 3.0.1 defines a collection as "a related group of resources."
 
 A collection consists of `metadata`, `links`, and subcollections. The key for a collection is the role of that collection:
+
 ```
 role
   metadata
@@ -124,11 +118,11 @@ It requires at least the presence of `href` and `type`:
 | properties  | properties associated with the linked resource  | [list of property values](http://www.idpf.org/epub/301/spec/epub-publications.html#sec-item-property-values)  | No  |
 | height  | indicates the height of the linked resource in pixels  | integer where the value is greater than zero | No  |
 | width  | indicates the width of the linked resource in pixels  | integer where the value is greater than zero | No  |
-| duration  | indicates the length of the linked resource in seconds  | integer where the value is greater than zero | No  |
-| templated  | indicates linked resource is a URI template  | boolean  | No  |
+| duration  | indicates the length of the linked resource in seconds  | ISO 8601 duration | No  |
+| templated  | indicates linked resource is a URI template  | boolean, defaults to false  | No  |
 
 
-## JSON-LD and Linked Data
+### Metadata
 
 JSON-LD provides an easy and standard way to extend existing JSON document: through the addition of a context, we can associate keys in a document to Linked Data elements from various vocabularies.
 
