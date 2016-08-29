@@ -1,12 +1,14 @@
-# Definitions
+# Default Context Definitions
 
 ##Title
 
 Every Web Publication Manifest must contain a single title:
 
-`"title": "Moby-Dick"`
+```json
+"title": "Moby-Dick"
+```
 
-In addition to a simple string representation, the `title` element also supports multiple representations of the same string in different scripts and languages:
+In addition to a simple string representation, the `title` element also supports alternate representations of the same string in different scripts and languages:
 
 ```json
 "title": {
@@ -33,11 +35,15 @@ A Web Publication Manifest should contain one or more contributor.
 
 The most straightforward expression of a contributor is through a simple string:
 
-`"author": "James Joyce"`
+```json
+"author": "James Joyce"
+```
 
 Each element can also contain multiple contributors using a simple array:
 
-`"illustrator": ["Shawn McManus", "Colleen Doran", "Bryan Talbot", "George Pratt", "Stan Woch", "Dick Giordano"]`
+```json
+"illustrator": ["Shawn McManus", "Colleen Doran", "Bryan Talbot", "George Pratt", "Stan Woch", "Dick Giordano"]
+```
 
 In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sorted_as` and `identifier`.
 
@@ -75,9 +81,10 @@ ISNI (http://isni.org) is the preferred authority, but other sources may also be
   "identifier": "http://isni.org/isni/0000000121317806"
 }
 ```
-If none of the elements provide the proper contributor role, a `contributor` role may be used instead. 
+If none of the elements available are specific enough, a `contributor` element may be used instead. 
 
-The `contributor` element should be used with an object that contains a `role` which value must be a [MARC relator code](https://www.loc.gov/marc/relators/relaterm.html): 
+The `contributor` element should be used with an object that contains a `role`. 
+All values for the `role` element should be based on [MARC relator codes](https://www.loc.gov/marc/relators/relaterm.html): 
 
 ```json
 "contributor": {
