@@ -134,9 +134,9 @@ The Web Publication Manifest defines an initial registry of well-known context d
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-[Default Context](https://github.com/dauwhe/epub31-bff/blob/master/contexts/default/) | http://idpf.org/epub.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
+[Default Context](contexts/default/) | http://idpf.org/epub.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
 
-The full up-to-date registry is [available directly on Github](https://github.com/dauwhe/epub31-bff/blob/master/contexts/).
+The full up-to-date registry is [available directly on Github](contexts/).
 
 ## Content Documents
 
