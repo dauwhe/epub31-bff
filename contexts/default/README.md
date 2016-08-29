@@ -17,14 +17,14 @@ Default Context | http://idpf.org/epub.jsonld  | Default context definition used
 
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |
-| [title](definitions.md#Title) | http://schema.org/name  | dc:title |
-| [sort_as](definitions.md#Title)  | http://schema.org/alternateName  | title@opf:file-as |
-| [author](definitions.md#Contributors) | http://schema.org/author  | dc:creator |
-| [translator](definitions.md#Contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
-| [editor](definitions.md#Contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
-| [illustrator](definitions.md#Contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
-| [narrator](definitions.md#Contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
-| [contributor](definitions.md#Contributors) | http://schema.org/contributor  | dc:contributor |
+| [title](definitions.md#title) | http://schema.org/name  | dc:title |
+| [sort_as](definitions.md#title)  | http://schema.org/alternateName  | title@opf:file-as |
+| [author](definitions.md#contributors) | http://schema.org/author  | dc:creator |
+| [translator](definitions.md#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
+| [editor](definitions.md#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
+| [illustrator](definitions.md#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
+| [narrator](definitions.md#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
+| [contributor](definitions.md#contributors) | http://schema.org/contributor  | dc:contributor |
 | language  | http://schema.org/inLanguage  | dc:language |
 | subject  | http://schema.org/keywords  | dc:subject |
 | publisher  | http://schema.org/publisher  | dc:publisher |
