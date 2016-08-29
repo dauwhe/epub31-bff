@@ -40,7 +40,7 @@
   ],
 
   "resources": [
-    {"href": "index.html", "rel": "navigation", "type": "text/html", "title": "Table of Contents"}, 
+    {"href": "index.html", "rel": "contents", "type": "text/html", "title": "Table of Contents"}, 
     {"href": "css/mobydick.css", "type": "text/css"},
     {"href": "fonts/STIXGeneral.otf", "type": "application/vnd.ms-opentype"},
     {"href": "fonts/STIXGeneralBol.otf", "type": "application/vnd.ms-opentype"},

@@ -126,25 +126,25 @@ It requires at least the presence of `href` and `type`:
 
 JSON-LD provides an easy and standard way to extend existing JSON document: through the addition of a context, we can associate keys in a document to Linked Data elements from various vocabularies.
 
-EPUB BFF relies on JSON-LD to provide a context for the `metadata` object of the manifest.
+The Web Publication Manifest relies on JSON-LD to provide a context for the `metadata` object of the manifest.
 
-While JSON-LD is very flexible and allows the context to be defined in-line (local context) or referenced (URI), EPUB BFF restricts context definition strictly to references.
+While JSON-LD is very flexible and allows the context to be defined in-line (local context) or referenced (URI), the Web Publication Manifest restricts context definition strictly to references.
 
-EPUB BFF defines an initial registry of well-known context documents, which currently includes the following references:
+The Web Publication Manifest defines an initial registry of well-known context documents, which currently includes the following references:
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-[Default Context](https://github.com/dauwhe/epub31-bff/blob/master/contexts/default/) | http://idpf.org/epub.jsonld  | Default context definition used in every EPUB BFF manifest. | Yes |
+[Default Context](https://github.com/dauwhe/epub31-bff/blob/master/contexts/default/) | http://idpf.org/epub.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
 
 The full up-to-date registry is [available directly on Github](https://github.com/dauwhe/epub31-bff/blob/master/contexts/).
 
 ## Content Documents
 
-EPUB-BFF content documents follow the usual rules of EPUB 3.1, but also allows HTML in addition to XHTML.
+Web Publication Manifest content documents follow the usual rules of EPUB 3.1, but also allows HTML in addition to XHTML.
 
 ### Discovering a Manifest
 
-To indicate that an EPUB-BFF content document is associated with a particular JSON manifest document, 
+To indicate that a content document is associated with a particular Web Publication Manifest, 
 use a `link` element in the HTML `head`:
 
 ```html
@@ -160,25 +160,25 @@ Link: <http://example.org/manifest.json>; rel="manifest";
 
 ## Table of Contents
 
-An EPUB BFF manifest can indicate that a table of contents is available using the `navigation` rel value in a Link Object listed in `spine` or `resources`:
+A Web Publication Manifest can indicate that a table of contents is available using the `contents` rel value in a Link Object listed in `spine` or `resources`:
 
 ```json
-{"rel": "navigation", "href": "contents.html", "type": "text/html"}
+{"rel": "contents", "href": "contents.html", "type": "text/html"}
 ```
 
 The link must point to an HTML or XHTML document and may be a Navigation Document as defined in EPUB 3.1. 
 
-An EPUB BFF client may also rely on the `title` key included in each Link Object of the `spine` to extract a minimal table of contents.
+A Web Publication Manifest client may also rely on the `title` key included in each Link Object of the `spine` to extract a minimal table of contents.
 
 ## Containers
 
 Classic EPUBs must be packaged in an EPUB Container as defined in the OCF specification.
 
-EPUB BFF is primarily meant to be distributed unpackaged and exploded on the Web.
+The Web Publication Manifest is primarily meant to be distributed unpackaged and exploded on the Web.
 
-That said, an EPUB BFF manifest may be included in a classic EPUB but reading systems have no obligation to access the manifest.
+That said, a Web Publication Manifest may be included in a classic EPUB but reading systems have no obligation to access the manifest.
 
-If an EPUB BFF manifest is included in an EPUB container, the following restrictions apply:
+If a Web Publication Manifest is included in an EPUB container, the following restrictions apply:
 
 - the manifest document must be named `manifest.json` and must appear at the top level of the container
 - the OPF of the primary rendition must include a link to the manifest where the relationship is set to `alternate`
