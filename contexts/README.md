@@ -7,7 +7,7 @@
 
 ## Registering a Context Document
 
-In order to register an additional context document for EPUB BFF, it is required to:
+In order to register an additional context document for the Web Publication Manifest, it is required to:
 
 - provide documentation in Markdown
 - publish the context document on a domain that you control

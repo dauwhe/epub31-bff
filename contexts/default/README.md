@@ -1,13 +1,13 @@
-#Default Context for EPUB BFF
+#Default Context for the Web Publication Manifest
 
 >**Note**: This proposal is still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
-EPUB BFF defines a shared external context document hosted by the IDPF and based primarily on schema.org and its extensions.
+The Web Publication Manifest defines a shared external context document hosted by the IDPF and based primarily on schema.org and its extensions.
 
 This context is meant primarily to:
 
 - provide compatibility with EPUB 3.1 by providing equivalent metadata elements based on schema.org
-- align EPUB BFF with the Web by adopting schema.org and its extensions
+- align the Web Publication Manifest with the Web by adopting schema.org and its extensions
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
@@ -17,13 +17,14 @@ Default Context | http://idpf.org/epub.jsonld  | Default context definition used
 
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |
-| title  | http://schema.org/name  | dc:title |
-| sort_as  | http://schema.org/alternateName  | opf:file-as |
-| author  | http://schema.org/author  | dc:creator |
-| translator  | http://schema.org/translator  | dc:contributor@opf:role="trl" |
-| editor  | http://schema.org/editor  | dc:contributor@opf:role="edt" |
-| illustrator  | http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
-| contributor  | http://schema.org/contributor  | dc:contributor |
+| [title](definitions.md#Title) | http://schema.org/name  | dc:title |
+| [sort_as](definitions.md#Title)  | http://schema.org/alternateName  | title@opf:file-as |
+| [author](definitions.md#Contributors) | http://schema.org/author  | dc:creator |
+| [translator](definitions.md#Contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
+| [editor](definitions.md#Contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
+| [illustrator](definitions.md#Contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
+| [narrator](definitions.md#Contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
+| [contributor](definitions.md#Contributors) | http://schema.org/contributor  | dc:contributor |
 | language  | http://schema.org/inLanguage  | dc:language |
 | subject  | http://schema.org/keywords  | dc:subject |
 | publisher  | http://schema.org/publisher  | dc:publisher |

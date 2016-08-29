@@ -24,6 +24,10 @@
       "@id": "http://schema.org/illustrator",
       "@type": "http://schema.org/Person"
     },
+    "narrator": {
+      "@id": "http://bib.schema.org/readBy",
+      "@type": "http://schema.org/Person"
+    },
     "contributor": {
       "@id": "http://schema.org/contributor",
       "@type": "http://schema.org/Person"
