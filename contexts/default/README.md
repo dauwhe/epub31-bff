@@ -27,7 +27,7 @@ Default Context | http://idpf.org/epub.jsonld  | Default context definition used
 | [narrator](definitions.md#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
 | [contributor](definitions.md#contributors) | http://schema.org/contributor  | dc:contributor |
 | [	language](definitions.md#language)  | http://schema.org/inLanguage  | dc:language |
-| subject  | http://schema.org/keywords  | dc:subject |
+| [subject](definitions.md#subjects)  | http://schema.org/keywords  | dc:subject |
 | [	publisher](definitions.md#publisher)  | http://schema.org/publisher  | dc:publisher |
 | [modified](definitions.md#identifier) | http://schema.org/dateModified  | dcterms:modified |
 | [	published](definitions.md#publication-date)   | http://schema.org/datePublished  | dc:date |
@@ -46,10 +46,10 @@ The following keys and their mappings to schema.org are used to specify collecti
 
 | Key  | Schema.org |
 | ---- | --- |
-| belongs_to  | http://www.schema.org/isPartOf |
-| series  | http://www.schema.org/Series |
-| collection  | http://www.schema.org/Collection |
-| position  | http://www.schema.org/position |
+| [belongs_to](definitions.md#collections--series) | http://www.schema.org/isPartOf |
+| [series](definitions.md#collections--series) | http://www.schema.org/Series |
+| [collection](definitions.md#collections--series) | http://www.schema.org/Collection |
+| [position](definitions.md#collections--series) | http://www.schema.org/position |
 
 Here's an example of metadata for both collections and series:
 
