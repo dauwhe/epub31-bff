@@ -1,8 +1,22 @@
 # Default Context Definitions
 
+##Identifier
+
+A Web Publication Manifest must contain an identifier. The identifier must be a valid URN:
+
+```json
+"identifier": "http://example.com/publication"
+```
+
+Publications can be updated and to identify each specific version, the manifest must also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
+
+```json
+"modified": "2016-02-22T11:31:38Z"
+```
+
 ##Title
 
-Every Web Publication Manifest must contain a single title:
+A Web Publication Manifest must contain a single title:
 
 ```json
 "title": "Moby-Dick"
@@ -90,5 +104,111 @@ All values for the `role` element should be based on [MARC relator codes](https:
 "contributor": {
   "name": "Lou Reed",
   "role": "sng"
+}
+```
+
+## Language
+
+In order to indicate its primary language, a Web Publication Manifest should use a `language` element. Its value must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) language tag.
+
+```json
+"language": "en"
+```
+
+If a publication has more than one primary language (a bilingual edition for example), the `language` element may contain an array of BCP 47 language tags:
+
+```json
+"language": ["en", "fr", "ja"]
+```
+
+## Description
+
+A Web Publication Manifest may contain a description of the publication in plain text using the `description` element:
+
+```json
+"description": "The story of two gnomes, discussing the meaning of life in a
+Scandivanian garden."
+```
+
+## Publisher
+
+A Web Publication Manifest may list one or more publishers using the `publisher` element.
+
+The most straightforward expression is through a simple string:
+
+```json
+"publisher": "Literary Fiction Ltd."
+```
+
+This element also allows a more complex representation using an object and the following elements: `name`, `sort_as`, `identifier`. The semantics and syntax are identical to contributors:
+
+```json
+"publisher": {
+  "name": "The Science Fiction Company",
+  "sort_as": "Science Fiction Company, The",
+  "identifier": "http://example.com/publisher"
+}
+```
+
+Multiple publishers can be listed in this element using the string or object representations.
+
+
+## Publication Date
+
+A Web Publication Manifest may contain a publication date using the `published` element. The publication date must be a valid ISO 8601 date.
+
+```json
+"published": "2016-09-02"
+```
+
+##Subjects
+
+A Web Publication Manifest may also provide one or more subjects using the `subject` element:
+
+```json
+"subject": "Historical Fiction"
+```
+
+Multiple subjects are listed using an array:
+
+```json
+"subject": ["Science Fiction", "Fantasy"]
+```
+
+Subjects can also be expressed using an object with the following elements: `name`, `sort_as`, `code` and `scheme`.
+
+`name` is meant to provide a human readable string for the subject, while `code` and `scheme` are meant to indicate that a subject is part of a controlled vocabulary:
+
+```json
+"subject": {
+  "name": "Manga: Shonen",
+  "sort_as": "Shonen",
+  "scheme": "THEMA",
+  "code": "XAMG"
+}
+```
+
+##Collections & Series
+
+A Web Publication Manifest may indicate that it belongs to one or multiple collections/series.
+
+`collection` and `series` behave the same way, the most straightforward way to indicate that a publication belongs to a collection/series is through a simple string:
+
+```json
+"belongs_to": {
+  "collection": "Mysteries from Another Time",
+  "series": "The Zombie Detective"
+}
+```
+
+To indicate the position of a publication in a collection/series or how the collection/series should be sorted, an object with the following elements can be used instead: `name`, `sort_as`, `position` and `identifier`.
+
+```json
+"belongs_to": {
+  "collection": "Young Adult Classics",
+  "series": {
+    "name": "Harry Potter",
+    "position": 4
+  }
 }
 ```

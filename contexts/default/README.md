@@ -17,6 +17,7 @@ Default Context | http://idpf.org/epub.jsonld  | Default context definition used
 
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |
+| [identifier](definitions.md#identifier) | None, identifies the resource  | dc:identifier |
 | [title](definitions.md#title) | http://schema.org/name  | dc:title |
 | [sort_as](definitions.md#title)  | http://schema.org/alternateName  | title@opf:file-as |
 | [author](definitions.md#contributors) | http://schema.org/author  | dc:creator |
@@ -25,37 +26,15 @@ Default Context | http://idpf.org/epub.jsonld  | Default context definition used
 | [illustrator](definitions.md#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
 | [narrator](definitions.md#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
 | [contributor](definitions.md#contributors) | http://schema.org/contributor  | dc:contributor |
-| language  | http://schema.org/inLanguage  | dc:language |
+| [	language](definitions.md#language)  | http://schema.org/inLanguage  | dc:language |
 | subject  | http://schema.org/keywords  | dc:subject |
-| publisher  | http://schema.org/publisher  | dc:publisher |
-| modified  | http://schema.org/dateModified  | dcterms:modified |
-| published  | http://schema.org/datePublished  | dc:date |
-| description  | http://schema.org/description  | dc:description |
+| [	publisher](definitions.md#publisher)  | http://schema.org/publisher  | dc:publisher |
+| [modified](definitions.md#identifier) | http://schema.org/dateModified  | dcterms:modified |
+| [	published](definitions.md#publication-date)   | http://schema.org/datePublished  | dc:date |
+| [	description](definitions.md#description)  | http://schema.org/description  | dc:description |
 | epub-type  | None  | dc:type |
 | numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
 
-
-## Rendition Properties
-
-All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.1 specification:
-
-| Key  | URI |
-| ---- | --- |
-| flow  | http://www.idpf.org/vocab/rendition/#flow |
-| layout  | http://www.idpf.org/vocab/rendition/#layout |
-| orientation  | http://www.idpf.org/vocab/rendition/#orientation |
-| spread  | http://www.idpf.org/vocab/rendition/#spread |
-
-Here's an example of metadata for a fixed layout document:
-
-```json
-"rendition": {
-  "flow": "paginated",
-  "layout": "pre-paginated",
-  "orientation": "landscape",
-  "spread": "none"
-}
-```
 
 ## Collections & Series Properties
 
@@ -84,6 +63,27 @@ Here's an example of metadata for both collections and series:
 }
 ```
 
+## Rendition Properties
+
+All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.1 specification:
+
+| Key  | URI |
+| ---- | --- |
+| flow  | http://www.idpf.org/vocab/rendition/#flow |
+| layout  | http://www.idpf.org/vocab/rendition/#layout |
+| orientation  | http://www.idpf.org/vocab/rendition/#orientation |
+| spread  | http://www.idpf.org/vocab/rendition/#spread |
+
+Here's an example of metadata for a fixed layout document:
+
+```json
+"rendition": {
+  "flow": "paginated",
+  "layout": "pre-paginated",
+  "orientation": "landscape",
+  "spread": "none"
+}
+```
 
 ## Example
 
