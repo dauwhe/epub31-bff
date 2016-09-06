@@ -16,13 +16,15 @@ Publications can be updated and to identify each specific version, the manifest 
 
 ##Title
 
-A Web Publication Manifest must contain a single title:
+A Web Publication Manifest must contain a single title using the `title` element:
 
 ```json
 "title": "Moby-Dick"
 ```
 
-In addition to a simple string representation, the `title` element also supports alternate representations of the same string in different scripts and languages:
+In addition to a simple string representation, the `title` element also supports alternate representations of the same string in different scripts and languages.
+
+To provide these alternate representations, an object may be used instead of a string, where each key identifies a language/script and must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) language tag:
 
 ```json
 "title": {
@@ -41,7 +43,7 @@ The manifest may also contain a `sort_as` element to provide a single sortable s
 
 ##Contributors
 
-The default context for the Web Publication Manifest provides a number of elements to indicate the nature of a contributor: `author`, `translator`, `editor`, `illustrator` and `narrator`.
+The default context for the Web Publication Manifest provides a number of elements to indicate the nature of a contributor: `author`, `translator`, `editor`, `artist`, `illustrator`, `letterer`, `penciler` and `narrator`.
 
 In addition to these elements, it also provides a generic term for contributors: `contributor`.
 
@@ -56,7 +58,7 @@ The most straightforward expression of a contributor is through a simple string:
 Each element can also contain multiple contributors using a simple array:
 
 ```json
-"illustrator": ["Shawn McManus", "Colleen Doran", "Bryan Talbot", "George Pratt", "Stan Woch", "Dick Giordano"]
+"illustrator": ["Shawn McManus", "Colleen Doran", "Bryan Talbot"]
 ```
 
 In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sorted_as` and `identifier`.
@@ -146,7 +148,7 @@ This element also allows a more complex representation using an object and the f
 "publisher": {
   "name": "The Science Fiction Company",
   "sort_as": "Science Fiction Company, The",
-  "identifier": "http://example.com/publisher"
+  "identifier": "http://example.com/publisher/TheScienceFictionCompany"
 }
 ```
 
@@ -177,7 +179,18 @@ Multiple subjects are listed using an array:
 
 Subjects can also be expressed using an object with the following elements: `name`, `sort_as`, `code` and `scheme`.
 
-`name` is meant to provide a human readable string for the subject, while `code` and `scheme` are meant to indicate that a subject is part of a controlled vocabulary:
+`name` is meant to provide a human readable string for the subject, while `sort_as` is meant to provide a string that a machine can sort: 
+
+```json
+"subject": {
+  "name": "Manga: Shonen",
+  "sort_as": "Shonen"
+}
+```
+
+In many fields and territories, a number of controlled vocabularies are in use to identify subjects. For example THEMA is used in the publishing industry to provide an international subject scheme.
+
+To indicate that a subject belongs to a particular scheme, the `scheme` element is available. In addition to it, the `code` element is available to provide the string that identifies the subject in a given scheme:
 
 ```json
 "subject": {
@@ -201,13 +214,42 @@ A Web Publication Manifest may indicate that it belongs to one or multiple colle
 }
 ```
 
-To indicate the position of a publication in a collection/series or how the collection/series should be sorted, an object with the following elements can be used instead: `name`, `sort_as`, `position` and `identifier`.
+In order to provide more information about a specific collection/series, an object can also be used instead of a string.
+
+To provide a name and a sortable string, `collection` and `series` support both `name` and `sort_as`:
 
 ```json
 "belongs_to": {
-  "collection": "Young Adult Classics",
   "series": {
-    "name": "Harry Potter",
+    "name": "The Zombie Detective",
+    "sort_as": "Zombie Detective, The"
+  }
+}
+```
+
+A collection/series can also have an identifier, provided using the `identifier`
+element. The identifier must be a URN:
+
+```json
+"belongs_to": {
+  "series": {
+    "name": "The Zombie Detective",
+    "sort_as": "Zombie Detective, The",
+    "identifier": "http://www.example.com/series/TheZombieDetective"
+  }
+}
+```
+
+Finally, series/collection can be ordered. To provide the position of the current publication in a series/collection, the `position` element can be used.
+
+A position can be either an integer or a float where the value is greater than zero.
+
+```json
+"belongs_to": {
+  "series": {
+    "name": "The Zombie Detective",
+    "sort_as": "Zombie Detective, The",
+    "identifier": "http://www.example.com/series/TheZombieDetective",
     "position": 4
   }
 }
