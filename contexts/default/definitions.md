@@ -43,7 +43,7 @@ The manifest may also contain a `sort_as` element to provide a single sortable s
 
 ##Contributors
 
-The default context for the Web Publication Manifest provides a number of elements to indicate the nature of a contributor: `author`, `translator`, `editor`, `artist`, `illustrator`, `letterer`, `penciler` and `narrator`.
+The default context for the Web Publication Manifest provides a number of elements to indicate the nature of a contributor: `author`, `translator`, `editor`, `artist`, `illustrator`, `letterer`, `penciler`, `colorist`, `inker` and `narrator`.
 
 In addition to these elements, it also provides a generic term for contributors: `contributor`.
 
@@ -58,7 +58,7 @@ The most straightforward expression of a contributor is through a simple string:
 Each element can also contain multiple contributors using a simple array:
 
 ```json
-"illustrator": ["Shawn McManus", "Colleen Doran", "Bryan Talbot"]
+"artist": ["Shawn McManus", "Colleen Doran", "Bryan Talbot"]
 ```
 
 In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sorted_as` and `identifier`.
@@ -136,10 +136,13 @@ Scandivanian garden."
 
 A Web Publication Manifest may list one or more publishers using the `publisher` element.
 
+To provide even more details, it's also possible to use the `imprint` element that behaves exactly like `publisher` but provides a complementary information.
+
 The most straightforward expression is through a simple string:
 
 ```json
-"publisher": "Literary Fiction Ltd."
+"publisher": "Literary Fiction Ltd.",
+"imprint": "World Literature"
 ```
 
 This element also allows a more complex representation using an object and the following elements: `name`, `sort_as`, `identifier`. The semantics and syntax are identical to contributors:
