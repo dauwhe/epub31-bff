@@ -19,7 +19,7 @@
   ],
   
   "spine": [
-    {"href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "properties": "cover-image", "title": "Cover"},
+    {"href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "rel": "cover"},
     {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
     {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
   ],

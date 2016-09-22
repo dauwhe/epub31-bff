@@ -107,7 +107,7 @@ Here's an example of metadata for a fixed layout document:
   ],
   
   "spine": [
-    {"href": "cover.jpg", "type": "image/jpeg", "properties": "cover-image", "title": "Cover"}, 
+    {"href": "cover.jpg", "type": "image/jpeg", "rel": "cover"}, 
     {"href": "map.svg", "type": "image/svg+xml", "title": "Map"}, 
     {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
     {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}

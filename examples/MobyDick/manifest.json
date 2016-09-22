@@ -15,7 +15,7 @@
   ],
 
   "spine": [
-    {"href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797, "properties": "cover-image", "title": "Cover"}, 
+    {"href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797, "rel": "cover"}, 
     {"href": "html/title-page.html", "type": "text/html", "title": "Title Page"},
     {"href": "html/copyright.html", "type": "text/html", "title": "Copyright"},
     {"href": "html/introduction.html", "type": "text/html", "title": "Etymology"},
