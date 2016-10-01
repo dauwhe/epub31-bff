@@ -1,7 +1,7 @@
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open('offline-publication').then(c => c.addAll([
+    caches.open('offline-publication-v2').then(c => c.addAll([
       './',
       'index.html',
       'html/title-page.html',
