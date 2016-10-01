@@ -6,8 +6,14 @@
       "src": "icon.png",
       "sizes": "64x64",
       "type": "image/png"
+    },
+    {
+      "src": "images/cover.jpg",
+      "sizes": "1253x797",
+      "type": "image/jpeg"
     }
   ],
+  "background_color": "#FAFAFA",
   "display": "standalone",
 
   "@context": "http://idpf.org/epub.jsonld",
