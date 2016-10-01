@@ -40,7 +40,7 @@ hyphens: auto;
 
 p + p { text-indent: 1em; }
 
-a {
+a.chapter {
 text-decoration: none;
 color: black;
 }
@@ -254,4 +254,11 @@ margin: 0 auto;
 width: 100%;
 }
 
+body {
+  margin: 3em;
+}
+
+.right {
+  text-align: right;
+}
 
