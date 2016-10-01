@@ -11,6 +11,5 @@
       navigator.serviceWorker.register('sw.js');
       navigator.serviceWorker.ready.then(function() {
         console.log('ready');
-        location.reload();
       });
     }());
