@@ -1,8 +1,9 @@
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open('offline-publication-v2').then(c => c.addAll([
-      './',
+    /*This should be handled dynamically by finding the manifest on the page
+    and then caching all items listed in spine & resources. This is a temp version.*/
+    caches.open('offline-publication-v3').then(c => c.addAll([
       'index.html',
       'html/title-page.html',
       'html/copyright.html',
@@ -32,8 +33,8 @@ self.addEventListener('fetch', event => {
   const sameOrigin = url.origin === location.origin;
 
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
     })
   );
 });
