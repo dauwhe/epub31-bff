@@ -256,9 +256,12 @@ width: 100%;
 
 body {
   margin: 2em;
+  /*
+  This is meant to handle pagination in Webkit, works better on Safari desktop.
   overflow: -webkit-paged-x;
   -webkit-scroll-snap-type: mandatory;
   -webkit-scroll-snap-points-x: repeat(100%);
+  */
 }
 
 .right {
