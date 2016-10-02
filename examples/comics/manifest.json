@@ -1,0 +1,47 @@
+{
+  "@context": "http://idpf.org/epub.jsonld",
+
+  "metadata": {
+    "@type": ["http://schema.org/GraphicNovel", "http://schema.org/EBook"],
+    "title": "La Page Blanche",
+    "sort_as": "Page Blanche, La",
+    "author": {
+      "name": "Boulet",
+      "identifier": "http://isni.org/isni/0000000120186808"
+    },
+    "illustrator": {
+      "name": "Pénélope Bagieu",
+      "sort_as": "Bagieu, Pénélope",
+      "identifier": "http://isni.org/isni/0000000121313960"
+    },
+    "identifier": "urn:isbn:97822531670xx",
+    "language": "fr",
+    "modified": "2016-07-20T17:00:00Z",
+    "published": "2012-01-18",
+    "publisher": ["Delcourt", "Mirages"],
+    "schema:license": "http://creativecommons.org/licenses/by-sa/3.0",
+    "epub-type": "preview",
+    "numberOfPages": 8,
+    "rendition": {
+      "layout": "pre-paginated",
+      "orientation": "auto",
+      "spread": "auto"
+    }
+  },
+
+  "links": [
+    {"rel": "self", "href": "http://dauwhe.github.io/epub31-bff/examples/comics/manifest.json", "type": "application/epub+json"}
+  ],
+
+  "spine": [
+    {"href": "cover.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "rel": "cover", "properties": "page-spread-left", "title": "Couverture"}, 
+    {"href": "PageBlanche_Page_001.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-left"}, 
+    {"href": "PageBlanche_Page_002.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-right", "title": "Dédicaces"}, 
+    {"href": "PageBlanche_Page_003.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-left"}, 
+    {"href": "PageBlanche_Page_004.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-right"}, 
+    {"href": "PageBlanche_Page_005.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-left", "title": "Commencer la lecture"}, 
+    {"href": "PageBlanche_Page_006.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-right"}, 
+    {"href": "PageBlanche_Page_007.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-left"}, 
+    {"href": "PageBlanche_Page_008.jpg", "type": "image/jpeg", "height": 1577, "width": 1200, "properties": "page-spread-right"}
+  ]
+}
