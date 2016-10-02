@@ -19,12 +19,12 @@
   ],
   
   "spine": [
-    {"href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "rel": "cover"},
     {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
     {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
   ],
 
   "resources": [
+    {"href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400, "rel": "cover"},
     {"href": "style.css", "type": "text/css"}, 
     {"href": "whale.jpg", "type": "image/jpeg"}, 
     {"href": "boat.svg", "type": "image/svg+xml"}, 
@@ -142,7 +142,7 @@ The full up-to-date registry is [available directly on Github](contexts/).
 
 Web Publication Manifest content documents follow the usual rules of EPUB 3.1, but also allows HTML in addition to XHTML.
 
-### Discovering a Manifest
+## Discovering a Manifest
 
 To indicate that a content document is associated with a particular Web Publication Manifest, 
 use a `link` element in the HTML `head`:
@@ -170,6 +170,16 @@ The link must point to an HTML or XHTML document and may be a Navigation Documen
 
 A Web Publication Manifest client may also rely on the `title` key included in each Link Object of the `spine` to extract a minimal table of contents.
 
+## Cover
+
+A Web Publication Manifest can also provide a cover using the `cover` rel value in a Link Object listed in `spine`, `resources` or `links`:
+
+```json
+{"rel": "cover", "href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400}
+```
+
+The link must point to an image using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
+
 ## Containers
 
 Classic EPUBs must be packaged in an EPUB Container as defined in the OCF specification.
@@ -186,6 +196,14 @@ If a Web Publication Manifest is included in an EPUB container, the following re
 ```xml
 <link rel="alternate" href="manifest.json" media-type="application/epub+json" />
 ```
+
+##Live Demo
+
+A live demo of a Web Publication is available at: https://dauwhe.github.io/epub31-bff/examples/MobyDick/
+
+The manifest for this demo is available at: https://dauwhe.github.io/epub31-bff/examples/MobyDick/manifest.json
+
+In addition to a Web Publication Manifest, this live demo also uses a Service Worker to provide offline reading and a Web App Manifest.
 
 ##Acknowledgements
 
