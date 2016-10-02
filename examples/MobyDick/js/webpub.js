@@ -15,7 +15,7 @@ A 1.0 should do the following:
     return;
   }
       
-  navigator.serviceWorker.register('cache.js');
+  navigator.serviceWorker.register('js/sw-toolbox-cache.js');
   navigator.serviceWorker.ready.then(function() {
     console.log('ready');
   });
