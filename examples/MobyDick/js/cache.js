@@ -1,3 +1,5 @@
+var AppManifest= '{"name": "Moby-Dick; or, The Whale", "short_name": "Moby-Dick", "start_url": "index.html", "background_color": "#FAFAFA", "display": "standalone"}';
+
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
@@ -40,9 +42,15 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const sameOrigin = url.origin === location.origin;
 
+  if (sameOrigin && url.pathname.endsWith('/appmanifest.json')) {
+    event.respondWith(new Response(AppManifest))
+    return;
+  }
+
   event.respondWith(
     fetch(event.request).catch(function() {
       return caches.match(event.request);
     })
   );
+
 });
