@@ -15,7 +15,7 @@ A 1.0 should do the following:
     return;
   }
       
-  navigator.serviceWorker.register('js/cache.js');
+  navigator.serviceWorker.register('js/cache.js', {scope: '/epub31-bff/'});
   navigator.serviceWorker.ready.then(function() {
     console.log('ready');
   });
