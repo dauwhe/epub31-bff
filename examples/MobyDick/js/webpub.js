@@ -15,7 +15,7 @@ A 1.0 should do the following:
     return;
   }
       
-  navigator.serviceWorker.register('js/serviceworker.js');
+  navigator.serviceWorker.register('serviceworker.js');
   navigator.serviceWorker.ready.then(function() {
     console.log('ready');
   });
