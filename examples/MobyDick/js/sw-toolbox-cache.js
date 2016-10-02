@@ -2,7 +2,7 @@
   'use strict';
 
   // Load the sw-toolbox library.
-  importScripts('js/lib/sw-toolbox.js');
+  importScripts('lib/sw-toolbox.js');
   
   //Debug mode
   global.toolbox.options.debug = true;
