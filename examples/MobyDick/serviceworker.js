@@ -1,8 +1,11 @@
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
-    /*This should be handled dynamically by finding the manifest on the page
-    and then caching all items listed in spine & resources. This is a temp version.*/
+    /*
+    This should be handled dynamically by finding the manifest on the page
+    and then caching all items listed in spine & resources. 
+    This is a temp version where all resources are specified in the SW.*/
+    
     caches.open('offline-publication-v3').then(c => c.addAll([
       'index.html',
       'html/title-page.html',
@@ -27,6 +30,11 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   clients.claim();
 });
+
+/*
+For a publication, it seems better to do network then cache than the opposite.
+Could be problematic when the network is very slow, but has the benefit of being fresh.
+*/
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
