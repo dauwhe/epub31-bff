@@ -1,5 +1,3 @@
-var AppManifest= '{"name": "Moby-Dick; or, The Whale", "short_name": "Moby-Dick", "start_url": "index.html", "background_color": "#FAFAFA", "display": "standalone"}';
-
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
@@ -41,11 +39,6 @@ Could be problematic when the network is very slow, but has the benefit of being
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const sameOrigin = url.origin === location.origin;
-
-  if (/\.webmanifest$/.test(event.request.url)) {
-    event.respondWith(new Response(AppManifest))
-    return;
-  }
 
   event.respondWith(
     fetch(event.request).catch(function() {
