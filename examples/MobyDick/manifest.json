@@ -11,12 +11,12 @@
   },
 
   "links": [
+    {"rel": "cover", "href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797}, 
     {"rel": "self", "href": "http://dauwhe.github.io/epub31-bff/examples/MobyDick/manifest.json", "type": "application/epub+json"}
   ],
 
   "spine": [
-    {"href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797, "rel": "cover"}, 
-    {"href": "html/title-page.html", "type": "text/html", "title": "Title Page"},
+    {"href": "index.html", "type": "text/html", "title": "Title Page"},
     {"href": "html/copyright.html", "type": "text/html", "title": "Copyright"},
     {"href": "html/introduction.html", "type": "text/html", "title": "Etymology"},
     {"href": "html/epigraph.html", "type": "text/html", "title": "Extracts"}, 
@@ -29,7 +29,7 @@
   ],
 
   "resources": [
-    {"href": "index.html", "rel": "contents", "type": "text/html", "title": "Table of Contents"}, 
+    {"href": "html/toc.html", "rel": "contents", "type": "text/html", "title": "Table of Contents"}, 
     {"href": "css/mobydick.css", "type": "text/css"},
     {"href": "fonts/STIXGeneral.otf", "type": "application/vnd.ms-opentype"},
     {"href": "fonts/STIXGeneralBol.otf", "type": "application/vnd.ms-opentype"},

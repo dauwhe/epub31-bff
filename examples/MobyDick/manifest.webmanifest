@@ -1,7 +1,7 @@
 {
   "name": "Moby-Dick; or, The Whale",
   "short_name": "Moby-Dick",
-  "start_url": "html/title-page.html",
+  "start_url": "index.html",
   "icons": [
     {
       "src": "icon.png",
