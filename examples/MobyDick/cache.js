@@ -6,7 +6,7 @@ self.addEventListener('install', event => {
     and then caching all items listed in spine & resources. 
     This is a temp version where all resources are specified in the SW.*/
     
-    caches.open('offline-publication-v6').then(c => c.addAll([
+    caches.open('mobydick-offline').then(c => c.addAll([
       'index.html',
       'html/toc.html',
       'html/copyright.html',
