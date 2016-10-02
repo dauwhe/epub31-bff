@@ -42,7 +42,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const sameOrigin = url.origin === location.origin;
 
-  if url.pathname.endsWith('/appmanifest.json') {
+  if (/\.webmanifest$/.test(event.request.url)) {
     event.respondWith(new Response(AppManifest))
     return;
   }
